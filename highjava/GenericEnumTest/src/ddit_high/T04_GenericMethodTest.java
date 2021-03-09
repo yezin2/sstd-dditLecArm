@@ -13,7 +13,9 @@ class Util {
 	 * @return
 	 */
 	public static <K, V> boolean compare(Pair<K, V> p1, Pair<K, V> p2) {
-		
+		//boolean 리턴타입 앞에 제너릭을 선언한다.
+		//유효범위 메서드 내에서만 제너릭 타입이 의미가 있다.
+		//pair라는 객체를 2개 받는게 제너릭 타입임. 뭔진 모르겟지만 일단 받아서 boolean으로 줄게.
 		boolean keyCompare = p1.getKey().equals(p2.getKey());
 		boolean valueCompare = p1.getValue().equals(p2.getValue());
 		
@@ -45,6 +47,9 @@ class Pair<K,V>{
 	public void setValue(V value) {
 		this.value = value;
 	}
+	
+	//키와 값을 모두 출력
+	public <K, V> void displayAll(K key, V value)
 }
 
 public class T04_GenericMethodTest{
@@ -72,5 +77,8 @@ public class T04_GenericMethodTest{
 		}else {
 			System.out.println("논리(의미)적으로 동일한 객체 아님");
 		}
+		
+		//제너릭 메서드 테스트
+		p1.<String, Integer>displayAll("키", 180);
 	}
 }
