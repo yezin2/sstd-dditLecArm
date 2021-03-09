@@ -21,6 +21,10 @@ public class T06_WildcardTest {
 		appleBox.add(new Apple());
 //		appleBox.add(new Grape());
 		appleBox.add(new Apple());
+		
+		Juicer.makeJuice(fruitBox); //과일 상자인 경우에는 아무런 문제 없음
+//		Juicer.makeJuice(appleBox);
+		
 	}
 }
 //주스클래스
