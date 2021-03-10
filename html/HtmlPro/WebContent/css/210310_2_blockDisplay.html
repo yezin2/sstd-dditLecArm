@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			#ex1,#ex3,div {
+				width: 200px;
+				height: 100px;}
+			#ex1 {
+				background-color: aqua;}
+			#ex2 {
+				background-color: yellow;
+				position: absolute;
+				top: 30px;
+				left: 50px;}
+			#ex3 {
+				background-color: lime;}
+			#container{
+				background-color: gray;}
+			img {
+				width: 300px;
+				position: absolute;
+				top: 500px;
+				z-index: -1;}
+			img+p {
+				}
+		</style>
+	</head>
+	<body>
+		<h1>position</h1>
+		<p id="ex1">블럭1</p>
+		<div id="container"></div>
+		<div id="ex2">블럭2(position)</div>
+		<p id="ex3">블럭3</p>
+		
+		<hr>
+		<h1>z-index연습</h1>
+		<img src="..\images\3.jpg">
+		<p>전자파 그만 쬐고싶어요ㅜㅜ</p>
+		
+	</body>
+</html>
