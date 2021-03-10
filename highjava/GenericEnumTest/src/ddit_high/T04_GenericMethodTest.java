@@ -49,7 +49,11 @@ class Pair<K,V>{
 	}
 	
 	//키와 값을 모두 출력
-	public <K, V> void displayAll(K key, V value)
+	public <K, V> void displayAll(K key, V value) {
+		//메서드 내에서 사용하는 순간 제너릭 메서드가 됨
+		System.out.println(key + " : " + value.toString());
+		//안붙여도 생략 가능함
+	}
 }
 
 public class T04_GenericMethodTest{
