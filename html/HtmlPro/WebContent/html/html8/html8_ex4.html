@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h1 style="color: red"; id="test">getElementById 사용하기</h1>
+	<button type="button" onclick="document.getElementById('test')">클릭</button>
+	
+	<script type="text/javascript">
+		function func() {
+			var obj = document.getElementById('test');
+			//obj에 <h1>이 할당됨
+			obj.style.color = "blue";
+		}
+		
+	</script>
+	<hr>
+	<h1>덧셈 계산기</h1>
+	첫번째 정수 : <input type="text" id="no1"><br>
+	두번째 정수 : <input type="text" id="no2"><br>
+	<button type="button" onclick="sum();">계산기</button>
+	
+	<script type="text/javascript">
+		function sum() {
+			//첫번째 정수와 두번째 정수 값을 가져와서
+			var ele1 = document.getElementById("no1");//
+			var x = ele1.value;
+			
+			var ele2 = document.getElementById("no2");//
+			var y = ele2.value;
+			
+			var y = document.getElementById("no2").value;
+			//더하고
+			var sum = 
+		}
+	</script>
+</body>
+</html>

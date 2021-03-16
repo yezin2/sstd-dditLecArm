@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>객체 생성방법</title>
+	<script type="text/javascript">
+		var myCar = {
+				model : "GV80",
+				color : "blue",
+				year : 2002,
+				speed : 100,
+				brake: function (){
+					//속도 줄이기(speed)
+					this.speed -= 10;
+				},
+				accel : function () {//~
+					//속도 줄이기(speed)
+					this.speed += 10;
+				}
+		};
+		
+		alert(myCar.color);
+		myCar.color = "red";
+		alert(myCar.color);
+		
+		alert(myCar.speed);
+		myCar.brake();
+		alert(myCar.speed);
+		myCar.accel();
+		alert(myCar.speed);
+		
+		//생성자로 객체생성
+		function Car(model, color, speed) {
+			this.model = model;
+			this.color = color;
+			this.speed = speed;
+			
+			this.brake = function () {
+				this.speed -= 10;
+			}
+			this.accel = function () {
+				this.speed += 10;
+			}
+		}
+		
+		var hongCar = new Car("G80", "red", 0);
+		var parkCar = new Car("F150", "black", 100);
+		//...
+		hongCar.color = "white";
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
