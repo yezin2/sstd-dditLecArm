@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		var str = "독도는 일본땅";
+		document.write(str + "이라는 말도 안 되는 소리를 바꿔줍니다.<br>");
+		
+		//str.search("일본");
+		//str.replace("일본", "우리");
+		str = str.replace("일본","우리");
+		var str1 = "asDfkeW";
+		//str1.toLowerCase();
+		//str1.toUpperCase();
+		
+		var str2 = "김선호, 오승엽, 류준열, 이정재, 주지훈";
+		document.write(str2 + "<br>");
+		
+		var arr2 = str2.split(", ");//split 사용시배열로 리턴
+		document.write("split 결과 : "+ arr2 + "<br>");
+		document.write("split 결과 arr2길이 : "+ arr2.length + "<br>");
+		
+		for(var i=0; i<arr2.length; i++){
+			document.write(arr2[i] + "님 안녕." + "<br>");
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
