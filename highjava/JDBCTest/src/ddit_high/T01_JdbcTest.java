@@ -57,7 +57,6 @@ public class T01_JdbcTest {
 			}
 			System.out.println("출력 끝...");
 			
-			
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -68,16 +67,5 @@ public class T01_JdbcTest {
 			if(stmt != null) try {stmt.close();} catch(SQLException ex) {}
 			if(conn != null) try {conn.close();} catch(SQLException ex) {}
 		}
-		
-		
-		
-		
-		
-		
-		
-		
 	}
-	
-	
-	
 }

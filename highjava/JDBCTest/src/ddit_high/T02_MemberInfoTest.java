@@ -7,6 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
+import util.JDBCUtil;
+import util.JDBCUtil2;
+import util.JDBCUtil3;
+
 /*
 	회원정보를 관리하는 프로그램을 작성하는데 
 	아래의 메뉴를 모두 구현하시오. (CRUD기능 구현하기)
@@ -42,8 +48,15 @@ public class T02_MemberInfoTest {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private Scanner scan = new Scanner(System.in); 
+	private Scanner scan = new Scanner(System.in);
 	
+	//Log4j를 이용한 로그를 남기기 위한 로거 생성
+	private static final Logger SQL_LOGGER = 
+			Logger.getLogger("log4jexam.sql.Query");
+	private static final Logger PARAM_LOGGER = 
+			Logger.getLogger("log4jexam.sql.Parameter");
+	private static final Logger RESULT_LOGGER = 
+			Logger.getLogger(T02_MemberInfoTest.class);
 	/**
 	 * 메뉴를 출력하는 메서드
 	 */
@@ -73,10 +86,10 @@ public class T02_MemberInfoTest {
 					insertMember();
 					break;
 				case 2 :  // 자료 삭제
-				
+					deleteMember();
 					break;
 				case 3 :  // 자료 수정
-				
+					updateMember();
 					break;
 				case 4 :  // 전체 자료 출력
 					displayAll();
@@ -90,6 +103,96 @@ public class T02_MemberInfoTest {
 		}while(choice!=5);
 	}
 	
+	//회원정보를 삭제하는 메서드(입력받은 ID를 이용하여 삭제함)
+	private void deleteMember() {
+		
+		System.out.println();
+		System.out.println("삭제할 회원 ID를 입력하세요.");
+		System.out.println("회원 ID >> ");
+		String memId = scan.next();
+		
+		try {
+			conn = JDBCUtil3.getConnection();
+			
+			String sql = "delete from mymember"
+					+ " where mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if(cnt > 0) {
+				System.out.println(memId + "회원 삭제 작업 성공");
+			} else {
+				System.out.println(memId + "회원 삭제 작업 실패!!!");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(memId + "회원삭제에 실패함");
+		} finally {
+			JDBCUtil.disConnect(conn, stmt, pstmt, rs);
+		}
+	}
+
+	//회원정보를 수정하는 메서드
+	private void updateMember() {
+		boolean chk = true;
+		String memId = null;
+		
+		do {
+			System.out.println();
+			System.out.println("수정할 회원 정보를 입력하세요.");
+			System.out.println("회원 ID >> ");
+			memId = scan.next();
+			
+			chk = checkMember(memId);
+			
+			if(chk == false) {
+				System.out.println("입력한 회원ID : " + memId + "인 회원이 존재하지 않습니다.");
+				System.out.println("다시 입력해 주세요.");
+			}
+		} while (chk == false);
+		
+		System.out.println("회원 이름 >> ");
+		String memName = scan.next();
+		
+		System.out.println("회원 전회번호 >> ");
+		String memTel = scan.next();
+		
+		scan.nextLine(); //입력버퍼 비우기
+		System.out.println("회원 주소 >> ");
+		String memAddr = scan.nextLine();
+		try {
+			conn = JDBCUtil3.getConnection();
+			
+			String sql = "update mymember"
+					+ " set mem_name = ?"
+					+ " ,mem_tel = ?"
+					+ " , mem_addr = ?"
+					+ " where mem_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memName);
+			pstmt.setString(2, memTel);
+			pstmt.setString(3, memAddr);
+			pstmt.setString(4, memId);
+			
+			int cnt = pstmt.executeUpdate();
+			
+			if(cnt > 0) {
+				System.out.println(memId + "회원 수정 작업 성공");
+			} else {
+				System.out.println(memId + "회원 수정 작업 실패!!!");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.disConnect(conn, stmt, pstmt, rs);
+		}
+	}
+
+	
 	//전체 회원을 출력하는 메서드
 	private void displayAll() {
 		System.out.println();
@@ -98,14 +201,7 @@ public class T02_MemberInfoTest {
 		System.out.println("================================================");
 		
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			// 2. DB에 접속 (Connection객체 생성)
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
-			String userId = "pc17";
-			String password = "java";
-			
-			conn = DriverManager.getConnection(url, userId, password);
+			conn = JDBCUtil3.getConnection();
 			
 			stmt = conn.createStatement();
 			
@@ -124,10 +220,8 @@ public class T02_MemberInfoTest {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			disConnect();
+		} finally {
+			JDBCUtil.disConnect(conn, stmt, pstmt, rs);
 		}
 		
 	}
@@ -162,26 +256,27 @@ public class T02_MemberInfoTest {
 		String memAddr = scan.nextLine();
 		
 		try {
-			// 1. 드라이버 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-						
-			// 2. DB에 접속 (Connection객체 생성)
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
-			String userId = "pc17";
-			String password = "java";
-			
-			conn = DriverManager.getConnection(url, userId, password);
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = "insert into mymember (mem_id, mem_name, mem_tel, mem_addr)"
 					+ " values (?, ?, ?, ?)";
+			
+			SQL_LOGGER.debug("QUERY : " + sql);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memId);
 			pstmt.setString(2, memName);
 			pstmt.setString(3, memTel);
 			pstmt.setString(4, memAddr);
 			
+			PARAM_LOGGER.debug("PARAM : (" 
+									+ memId + ", "
+									+ memName + ", "
+									+ memTel + ", "
+									+ memAddr + ")");
+			
 			int cnt = pstmt.executeUpdate();
 			
+			RESULT_LOGGER.warn("RESULT : " + cnt);
 			if(cnt > 0) {
 				System.out.println(memId + "회원 추가 작업 성공");
 			} else {
@@ -190,10 +285,8 @@ public class T02_MemberInfoTest {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally {
-			disConnect();
+		} finally {
+			JDBCUtil.disConnect(conn, stmt, pstmt, rs);
 		}
 	}
 	
@@ -206,15 +299,7 @@ public class T02_MemberInfoTest {
 		boolean chk = false;
 		
 		try {
-			// 1. 드라이버 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-						
-			// 2. DB에 접속 (Connection객체 생성)
-			String url = "jdbc:oracle:thin:@localhost:1521/xe";
-			String userId = "pc17";
-			String password = "java";
-			
-			conn = DriverManager.getConnection(url, userId, password);
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = "select count(*) cnt from mymember where mem_id = ?";
 			pstmt = conn.prepareStatement(sql);
@@ -233,20 +318,10 @@ public class T02_MemberInfoTest {
 			
 		} catch (SQLException ex) {
 			ex.printStackTrace();
-		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
-		}finally {
-			disConnect();
+		} finally {
+			JDBCUtil.disConnect(conn, stmt, pstmt, rs);
 		}
 		return chk;
-	}
-	
-	//자원 반납
-	private void disConnect() {
-		if(rs != null) try {rs.close();} catch(SQLException ex) {}
-		if(stmt != null) try {stmt.close();} catch(SQLException ex) {}
-		if(conn != null) try {conn.close();} catch(SQLException ex) {}
-		if(pstmt != null) try {pstmt.close();} catch(SQLException ex) {}
 	}
 
 	public static void main(String[] args) {
