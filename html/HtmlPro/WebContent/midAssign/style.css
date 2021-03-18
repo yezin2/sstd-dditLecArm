@@ -17,7 +17,8 @@ header>a:hover{
 #malo{
 	width: 100px;}
 nav{
-	padding-left:20%; 
+	padding: 10px;
+	padding-left:27%; 
 	background-color: #fdfae2;}
 nav>ul{ 
 	list-style:none;  
@@ -29,7 +30,7 @@ nav>ul>li{
 #categori{
 	background-color: #fdecf7;
 	width: 25%; 
-	height: 700px; 
+	height: 600px; 
 	float: left;}
 #categori>ul{
 	list-style:none; 
@@ -41,20 +42,22 @@ nav>ul>li{
 #categori>ul>li{
 	background-color: gray; 
 	border: 1px solid white;
-	height: 70px;}
+	height: 50px;}
 	
 #mart{
 	float: left;
-	height: 500px;
-	width: calc(60%-30px);}
-#mart>iframe{
+	width: 50%;
+	margin-left: 10px;
+}
+#mart iframe{
 	width: 100%;
+	height: 600px;
 }
 
 #right{
 	float: right;
 	width: 20%;
-	height: 700px;
+	height: 600px;
 	background-color: #fdecf7;
 	padding-left: 20px;
 	padding-right: 20px;}
@@ -64,9 +67,9 @@ nav>ul>li{
 footer{
 	width: 100%;
 	position: absolute;
-	bottom: 0;
+	bottom: -405px;
 	background-color: antiquewhite;
-	padding: 20px 0px;
+	padding: 60px 0px;
 	text-align: center;
 }
 
