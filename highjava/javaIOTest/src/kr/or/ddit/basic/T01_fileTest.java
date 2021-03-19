@@ -41,7 +41,7 @@ public class T01_fileTest {
 		System.out.println("표준경로 : " + file4.getCanonicalPath());
 		System.out.println("현재 클래스의 URL : " + T01_fileTest.class.getResource("T01_fileTest.class"));
 		System.out.println("------------------------------------------");
-		
+		//URL : Uniform Resource Locator
 		//현재클래스의 URL에서 경로부분을 가져오기
 		System.out.println(T01_fileTest.class.getResource("").getPath());
 		
