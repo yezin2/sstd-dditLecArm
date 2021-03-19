@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보</title>
+<script type="text/javascript">
+//	var input = prompt("바위 가위 보 중에 선택", "바위 가위 보");
+//	var ai = parseInt(Math.random()*3);
+//	var rsp = ["바위", "가위", "보"];
+	
+//	document.write("사용자 입력 : " + input + "<br>");
+//	if(input == rsp[0]){
+		
+//	}
+	function chaStat() {
+		var osrc = document.getElementById("but").src;
+		var nsrc;
+		if(osrc.indexOf("sw_off") > -1){
+			nsrc = "../../images/sw_on.png";
+		} else {
+			nsrc = "../../images/sw_off.png";
+		}
+		document.getElementById("but").src = nsrc;
+	}
+//	document.write("컴퓨터 랜덤 입력 : " + rsp[ai] + "<br>");
+	function rs(input) {
+		var ai = parseInt(Math.random()*3);
+		var rsp = ["바위", "가위", "보"];
+		if(input == ai){
+			document.write("DRAW!!")
+		} else if((input == rsp[0] && ai == 1)||
+				(input == rsp[1] && ai == 2)||
+				(input == rsp[2] && ai == 0)){
+			document.write("사용자가 이김!!")
+		} else if((input == rsp[0] && ai == 2)||
+				(input == rsp[1] && ai == 0)||
+				(input == rsp[2] && ai == 1)){
+			document.write("컴퓨터가 이김!!")
+		}
+	}
+	var input = prompt("바위 가위 보 중에 선택", "바위 가위 보");
+	var ai = parseInt(Math.random()*3);
+	var rsp = ["바위", "가위", "보"];
+	
+	document.write("사용자 입력 : " + input + "<br>");
+	document.write("컴퓨터 랜덤 입력 : " + rsp[ai] + "<br>");
+	if(input == rsp[ai] || input == ai){
+		document.write("DRAW!!")
+	} else if((input == rsp[0] && ai == 1)||
+			(input == rsp[1] && ai == 2)||
+			(input == rsp[2] && ai == 0)){
+		document.write("사용자가 이김!!")
+	} else if((input == rsp[0] && ai == 2)||
+			(input == rsp[1] && ai == 0)||
+			(input == rsp[2] && ai == 1)){
+		document.write("컴퓨터가 이김!!")
+	}
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td rowspan="2">
+				<button type="button" onclick="start()">게임시작</button>
+			</td>
+		</tr>
+		<tr>
+			<td id="person">사람</td>
+			<td id="pc">컴퓨터</td>
+		</tr>
+		<tr>
+			<td>
+				<img alt="이미지" src="../../images/ba_left.png" 
+					width="50%">
+				<img alt="이미지" src="../../images/ba_right.png"
+					width="50%">
+			</td>
+			<td rowspan="2">
+				<p id="rs">결과 : </p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

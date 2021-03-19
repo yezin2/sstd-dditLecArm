@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		function addtext(t) {
+			var node = document.createTextNode(t);
+			document.getElementById("target").appendChild(node);
+		}
+	</script>
+</head>
+<body>
+	<div id="target" style="font: 20px bold;"
+		onclick="addtext('무궁화꽃')">
+		여기를 클릭</div>
+</body>
+</html>

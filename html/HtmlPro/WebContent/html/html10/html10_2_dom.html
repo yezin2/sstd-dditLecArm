@@ -23,17 +23,17 @@
 		
 		<hr>
 		<button type="button">
-		<img id="but" src="../../images/on.png" 
+		<img id="but" src="../../images/sw_off.png" 
 		width="100" onclick="chaStat()"></button>
 	</form>
 	<script type="text/javascript">
 		function chaStat() {
 			var osrc = document.getElementById("but").src;
 			var nsrc;
-			if(osrc.indexOf("on") > -1){
-				nsrc = "../../images/off.png";
+			if(osrc.indexOf("sw_off") > -1){
+				nsrc = "../../images/sw_on.png";
 			} else {
-				nsrc = "../../images/on.png";
+				nsrc = "../../images/sw_off.png";
 			}
 			document.getElementById("but").src = nsrc;
 		}
