@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>form1</title>
+	<script type="text/javascript">
+		function print() {
+			for(var i=2; i<10; i++){
+				result += ggd + " * " + 
+			}
+			/* case 1)요소를 생성해서 추가 - createElement
+			var ele = document.createElement("p");
+			ele.innerHTML = result;
+			document.getElementById("result").appendChild(ele); */
+			
+			/* case 2)텍스트 노드를 생성해서 추가
+			var node = document.createTextNode(result);
+			document.getElementById("result").appendChild(node); */
+			
+			var tmpHtml = document.getElementById()
+		}
+	</script>
+</head>
+<body>
+	<input list="nums" name="num">
+	<button type="button" onclick="ggd()">출력</button>
+	<textarea rows="100" cols="100"></textarea>
+	
+	<br>
+	<div id="result">
+		<h3>결과 출력</h3>
+	</div>
+	<script type="text/javascript">
+		var parentEle = document.getelementById("ggd"); //<select>
+//		<option value="2">2단</option>
+		for(var i=2; i<10; i++){
+			var ele = document.createElement("option");
+			ele.value = i;
+			ele.innerHTML = i + "단";
+			
+			parentEle.appendChild(ele)
+		}
+	</script>
+</body>
+</html>

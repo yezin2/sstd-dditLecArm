@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가위바위보</title>
+	<script type="text/javascript">
+		function start() {
+			var stat = document.getElementById("rsp").value;
+			console.log(stat);
+			var ai = parseInt(Math.random()*3);
+			var rsp = ["바위", "가위", "보"];
+			
+			var perSrc;
+			if(stat == 0){
+				perSrc = "../../images/ba_left.png";
+			} else if(stat == 1) {
+				perSrc = "../../images/ga_left.png";
+			} else if(stat == 2) {
+				perSrc = "../../images/bo_left.png";
+			}
+			document.getElementById("perimg").src = perSrc;
+			
+			var pcSrc;
+			if(ai == 0){
+				pcSrc = "../../images/ba_right.png";
+			} else if(ai == 1) {
+				pcSrc = "../../images/ga_right.png";
+			} else if(ai == 2) {
+				pcSrc = "../../images/bo_right.png";
+			}
+			document.getElementById("pcimg").src = pcSrc;
+			
+			var dr = "DRAW!!";
+			var pw = "HUMAN WIN!!";
+			var cw = "COMPUTER WIN!!";
+			var rs = document.getElementById("rs");
+			if(stat == ai){
+				rs.innerHTML = dr;
+			} else if((stat == 0 && ai == 1)||
+					(stat == 1 && ai == 2)||
+					(stat == 2 && ai == 0)){
+				rs.innerHTML = pw;
+			} else if((stat == 0 && ai == 2)||
+					(stat == 1 && ai == 0)||
+					(stat == 2 && ai == 1)){
+				rs.innerHTML = cw;
+			}
+		}
+	</script>
+	<style>
+		table{
+			width:100%;}
+		th{
+			background-color: skyblue;}
+		#person {
+			background-color: yellow;
+			width : 50%;
+			text-align: center;}
+		#computer{
+			background-color: red;
+			text-align: center;}
+		#thirdTD{
+			text-align: center;}
+		tr:last-child {
+			text-align: center;
+			font-size: 30px;
+			background-color: yellowgreen;}
+		
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th colspan="2">
+				<p>선택하신 후 게임시작을 눌러주세요</p>
+				<select id="rsp">
+					<option value="">선택</option>
+					<option value="1">가위</option>
+					<option value="0">바위</option>
+					<option value="2">보</option>
+				</select>
+				<button type="button" onclick="start()">게임시작</button>
+			</th>
+		</tr>
+		<tr>
+			<td id="person">HUMAN</td>
+			<td id="computer">컴퓨터</td>
+		</tr>
+		<tr id="thirdTD">
+			<td>
+				<img id="perimg" alt="사람이미지" src="../../images/ba_left.png" 
+					width="100px">
+			</td>
+			<td>
+				<img id="pcimg" alt="pc이미지" src="../../images/ba_right.png"
+					width="100px">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<p>결과</p>
+				<p id="rs"></p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
