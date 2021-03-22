@@ -30,7 +30,7 @@ public class T10_FileEncodingTest {
 		FileOutputStream fos2 = 
 				new FileOutputStream("d:/D_Other/out_ansi.txt");
 		
-		// 보조스트림 객체 생성
+		// 보조스트림 객체 생성 (보조 스트림은 기반 스트림이 개필수임)
 		OutputStreamWriter osw1 = 
 				new OutputStreamWriter(fos1, "utf-8");
 		OutputStreamWriter osw2 = 
