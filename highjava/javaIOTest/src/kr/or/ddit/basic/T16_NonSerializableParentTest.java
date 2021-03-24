@@ -75,6 +75,7 @@ class Child extends Parent implements Serializable {
 	 * (접근제한자가 private이 아니면 자동호출 되지 않는다.)
 	 * @param out
 	 * @throws IOException
+	 * 직렬화 작업을 하지 않아도 IO작업이 가능함
 	 */
 	private void writeObject(ObjectOutputStream out) throws IOException {
 		//ObjectOutputStream객체의 메서드 이용해 부모객체 필드값 처리하기

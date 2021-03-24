@@ -1,34 +1,25 @@
 package kr.or.ddit.board.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
 import com.ibatis.sqlmap.client.SqlMapClient;
-
 import kr.or.ddit.board.vo.BoardVO;
-import kr.or.ddit.util.SqlMapClientUtil;
-import util.JDBCUtil;
 
-public class BoardDaoImpl implements IboardDao{
+public class BoardDaoImpl implements IBoardDao{
 
-	private static IboardDao memDao;
+	private static IBoardDao boardDao;
 	
 	private BoardDaoImpl() { }
-	public static IboardDao getInstance() {
-		if(memDao == null) {
-			memDao = new BoardDaoImpl();
+	public static IBoardDao getInstance() {
+		if(boardDao == null) {
+			boardDao = new BoardDaoImpl();
 		}
-		return memDao;
+		return boardDao;
 	}
 	@Override
-	public int insertMember(SqlMapClient smc, BoardVO mv) throws SQLException {
+	public int insertBoard(SqlMapClient smc, BoardVO bv) throws SQLException {
 		int cnt = 0;
-		Object obj = smc.insert("member.insertMember", mv);
+		Object obj = smc.insert("board.insertBoard", bv);
 		if(obj == null) {
 			cnt = 1;
 		}
@@ -37,9 +28,9 @@ public class BoardDaoImpl implements IboardDao{
 	}
 
 	@Override
-	public boolean checkMember(SqlMapClient smc, String memId) throws SQLException {
+	public boolean checkBoard(SqlMapClient smc, String boardNo) throws SQLException {
 		boolean chk = false;
-		int cnt = (int) smc.queryForObject("member.getMember", memId);
+		int cnt = (int) smc.queryForObject("board.getBoard", boardNo);
 		if(cnt > 0) {
 			chk = true;
 		}		
@@ -47,34 +38,34 @@ public class BoardDaoImpl implements IboardDao{
 	}
 
 	@Override
-	public List<BoardVO> getAllMemberList(SqlMapClient smc) throws SQLException {
+	public List<BoardVO> getAllBoardList(SqlMapClient smc) throws SQLException {
 		
-		List<BoardVO> memList = smc.queryForList("member.getMemberAll");
+		List<BoardVO> boardList = smc.queryForList("board.getBoardAll");
 		
-		return memList;
+		return boardList;
 	}
 
 	@Override
-	public int updateMember(SqlMapClient smc, BoardVO mv) throws SQLException {
-		int cnt = smc.update("member.updateMember", mv);
+	public int updateBoard(SqlMapClient smc, BoardVO bv) throws SQLException {
+		int cnt = smc.update("board.updateBoard", bv);
 		
 		
 		return cnt;
 	}
 
 	@Override
-	public int deleteMember(SqlMapClient smc, String memId) throws SQLException {
-		int cnt = smc.delete("member.deleteMember", memId);
+	public int deleteBoard(SqlMapClient smc, String boardNo) throws SQLException {
+		int cnt = smc.delete("board.deleteBoard", boardNo);
 		
 		
 		return cnt;
 	}
 
 	@Override
-	public List<BoardVO> getSearchMember(SqlMapClient smc, BoardVO mv) throws SQLException {
-		List<BoardVO> memList = smc.queryForList("member.getSearchMember", mv);
+	public List<BoardVO> getSearchBoard(SqlMapClient smc, BoardVO bv) throws SQLException {
+		List<BoardVO> boardList = smc.queryForList("board.getSearchBoard", bv);
 		
-		return memList;
+		return boardList;
 	}
 	
 	

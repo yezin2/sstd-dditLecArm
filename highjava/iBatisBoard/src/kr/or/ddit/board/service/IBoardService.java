@@ -1,7 +1,5 @@
 package kr.or.ddit.board.service;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import kr.or.ddit.board.vo.BoardVO;
@@ -14,43 +12,43 @@ import kr.or.ddit.board.vo.BoardVO;
 public interface IBoardService {
 	
 	/**
-	 * 회원등록하는 메서드
-	 * @param mv DB에 insert할 자료가 저장된 MemberVO객체
-	 * @return DB작업이 성공하면 1이상의 값이 반환되고, 실패하면 0이 반환된다.
-	 */
-	public int insertMember(BoardVO mv);
-	
-	/**
-	 * 주어진 회원ID가 존재하는지 여부를 알아내는 메서드
-	 * @param memId 회원ID
-	 * @return 해당 회원ID가 존재하면 true, 존재하지 않으면 false
-	 */
-	public boolean checkMember(String memId);
-	
-	/**
-	 * 전체 회원정보 조회 메서드
-	 * @return 회원정보를 담고있는 List객체
-	 */
-	public List<BoardVO> getAllMemberList();
-	
-	/**
-	 * 하나의 회원정보를 수정하는 메서드
-	 * @param mv 회원정보 객체
+	 * 게시물 등록하는 메서드
+	 * @param bv DB에 insert할 자료가 저장된 BoardVO객체
 	 * @return 작업성공: 1, 작업실패: 0
 	 */
-	public int updateMember(BoardVO mv);
+	public int insertBoard(BoardVO bv);
 	
 	/**
-	 * 회원정보를 삭제하는 메서드
-	 * @param memId 삭제할 회원ID
+	 * 주어진 게시물 번호가 존재하는지 여부를 알아내는 메서드
+	 * @param boardNo 게시물 번호
+	 * @return 해당 게시물 번호가 존재하면 true, 존재하지 않으면 false
+	 */
+	public boolean checkBoard(String boardNo);
+	
+	/**
+	 * 전체 게시물 정보 조회 메서드
+	 * @return 게시물 정보를 담고있는 List객체
+	 */
+	public List<BoardVO> getAllBoardList();
+	
+	/**
+	 * 하나의 게시물 정보를 수정하는 메서드
+	 * @param bv 게시물 정보 객체
+	 * @return 작업성공: 1, 작업실패: 0
+	 */
+	public int updateBoard(BoardVO bv);
+	
+	/**
+	 * 게시물 정보를 삭제하는 메서드
+	 * @param boardNo 삭제할 게시물 번호
 	 * @return 작업성공 : 1, 작업실패: 0 
 	 */
-	public int deleteMember(String memId);
+	public int deleteBoard(String boardNo);
 
 	/**
-	 * 회원정보를 검색
-	 * @param mv
+	 * 게시물 정보를 검색
+	 * @param bv
 	 * @return
 	 */
-	public List<BoardVO> getSearchMember(BoardVO mv);
+	public List<BoardVO> getSearchBoard(BoardVO bv);
 }

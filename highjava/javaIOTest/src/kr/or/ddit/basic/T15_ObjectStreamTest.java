@@ -28,9 +28,10 @@ public class T15_ObjectStreamTest {
 			//객체를 파일에 저장하기
 			
 			//출력용 스트림 객체 생성
-			ObjectOutputStream oos = new ObjectOutputStream(
-										new BufferedOutputStream(
-											new FileOutputStream("d:/D_Other/memObj.bin")));
+			ObjectOutputStream oos = 
+					new ObjectOutputStream(
+						new BufferedOutputStream(
+							new FileOutputStream("d:/D_Other/memObj.bin")));
 			
 			//쓰기 작업
 			oos.writeObject(mem1);	//직렬화
@@ -44,7 +45,10 @@ public class T15_ObjectStreamTest {
 			//====================================================
 			//저장한 객체를 읽어와 출력하기
 			//입력용 스트림 객체 생성
-			ObjectInputStream  ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("d:/D_Other/memObj.bin")));
+			ObjectInputStream  ois = 
+					new ObjectInputStream(
+						new BufferedInputStream(
+							new FileInputStream("d:/D_Other/memObj.bin")));
 			
 			Object obj = null;
 			try {
@@ -79,7 +83,7 @@ class Member implements Serializable {
 	 *  			직렬화가 되지 않은 멤버변수는 기본값으로 저장된다.
 	 *  			(참조형 변수 : null, 숫자형 변수 : 0)
 	 */
-	
+//	직렬화된 데이터를 객체로 변환하는 작업 : 역직렬화
 	private String name;
 	private transient int age;
 	private String addr;

@@ -13,6 +13,7 @@ public class BoardVO {
 	private String boardAut;
 	private String boardCont;
 	private String boardDay;
+	
 	public String getBoardNo() {
 		return boardNo;
 	}

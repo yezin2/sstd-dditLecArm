@@ -1,44 +1,41 @@
 package kr.or.ddit.board.service;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.board.dao.IboardDao;
+import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.board.dao.BoardDaoImpl;
 import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.util.SqlMapClientUtil;
-import util.JDBCUtil;
-import util.JDBCUtil3;
 
-public class BoardImpl implements IBoardService{
+public class BoardServiceImpl implements IBoardService{
 
 	//사용할 DAO의 객체변수를 선언한다.
-	private IboardDao memDao;
+	private IBoardDao boardDao;
 	private SqlMapClient smc;
 	
 	private static IBoardService service;
 	
-	private BoardImpl() {
-		memDao = BoardDaoImpl.getInstance();
+	private BoardServiceImpl() {
+		boardDao = BoardDaoImpl.getInstance();
 		smc = SqlMapClientUtil.getInstance();
 	}
 	
 	public static IBoardService getInstance() {
 		if(service == null) {
-			service = new BoardImpl();
+			service = new BoardServiceImpl();
 		}
 		return service;
 	}
 	@Override
-	public int insertMember(BoardVO mv) {
+	public int insertBoard(BoardVO bv) {
 		int cnt = 0;
 		
 		try {
-			cnt = memDao.insertMember(smc, mv);
+			cnt = boardDao.insertBoard(smc, bv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -46,11 +43,11 @@ public class BoardImpl implements IBoardService{
 	}
 
 	@Override
-	public boolean checkMember(String memId) {
+	public boolean checkBoard(String boardNo) {
 		boolean chk = false;
 		
 		try {
-			chk = memDao.checkMember(smc, memId);
+			chk = boardDao.checkBoard(smc, boardNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,22 +55,22 @@ public class BoardImpl implements IBoardService{
 	}
 
 	@Override
-	public List<BoardVO> getAllMemberList() {
+	public List<BoardVO> getAllBoardList() {
 		
-		List<BoardVO> memList = new ArrayList<BoardVO>();
+		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
-			memList = memDao.getAllMemberList(smc);
+			boardList = boardDao.getAllBoardList(smc);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return memList;
+		return boardList;
 	}
 
 	@Override
-	public int updateMember(BoardVO mv) {
+	public int updateBoard(BoardVO bv) {
 		int cnt = 0;
 		try {
-			cnt = memDao.updateMember(smc, mv);
+			cnt = boardDao.updateBoard(smc, bv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -81,10 +78,10 @@ public class BoardImpl implements IBoardService{
 	}
 
 	@Override
-	public int deleteMember(String memId) {
+	public int deleteBoard(String boardNo) {
 		int cnt = 0;
 		try {
-			cnt = memDao.deleteMember(smc, memId);
+			cnt = boardDao.deleteBoard(smc, boardNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -92,15 +89,15 @@ public class BoardImpl implements IBoardService{
 	}
 	
 	@Override
-	public List<BoardVO> getSearchMember(BoardVO mv) {
-		List<BoardVO> memList = new ArrayList<>();
+	public List<BoardVO> getSearchBoard(BoardVO bv) {
+		List<BoardVO> boardList = new ArrayList<>();
 		
 		try {
-			memList = memDao.getSearchMember(smc, mv);
+			boardList = boardDao.getSearchBoard(smc, bv);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return memList;
+		return boardList;
 	}
 	
 	

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Assign3_Hotel {
 	public static Scanner scan= new Scanner(System.in);
-	private static List<HashMap<String, hotel>> hotelI = new ArrayList();
+	private static List<HashMap<String, Object>> hotelI = new ArrayList();
 		
 	public static void main(String[] args) {
 		System.out.println("***********************************");
