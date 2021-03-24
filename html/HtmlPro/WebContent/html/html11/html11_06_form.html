@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		
+		function validate() {
+			var id = ["userName", "userAddr", "userBD", "userId", "userEmail", "userTel"];
+			var idAlert = ["이름", "주소", "생일", "아이디", "이메일", "휴대폰 번호"];
+			var idArr = [2, 5, 0, 0, 0, 10, 6, 8, 0, 0, 0, 13];
+			var j = 0;
+			for(var i=0; i<id.length; i++){
+				var ele = document.getElementById(id[i]);
+				//빈값 체크
+				if(ele.value.trim().length != 0){
+					//자릿수 체크
+					if(i != 1 && i != 4){
+						j = i+i;
+						if(ele.value.length < idArr[j] || 
+								ele.value.length > idArr[j+1]){
+							
+							alert(idAlert[i] + "은(는)  " + idArr[j] 
+									+ "~" + idArr[j+1] + "글자 입니다.");
+							ele.focus();
+							
+							return;
+						}//if3
+						else{
+							if(i == id.length-1) {
+								alert("검사후 제출 완료되었습니다.");
+								document.getElementByTagName("<button>").type = "submit";
+								break;
+							}//if4
+						}//else3
+					}//if2
+				}//if1
+				else {
+					alert(idAlert[i] + "이(가) 비었습니다.");
+					ele.focus();
+					return;
+				}//else1
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<h3>회원가입</h3>
+	<form action="">
+		이름 : <input type="text" id="userName"><br>
+		주소 : <input type="text" id="userAddr"><br>
+		생일 : <input type="date" id="userBD"><br>
+		아이디(6~8문자) : <input type="text" id="userId"><br>
+		이메일 : <input type="email" id="userEmail"><br>
+		휴대폰 : <input type="text" id="userTel"><br>
+		<!-- <button type="submit">확인</button>
+		<button type="button" onclick="checkEmpty()">확인(empty)</button>
+		<button type="button" onclick="checkLength()">확인(length)</button> -->
+		<button type="button" onclick="validate()">확인</button>
+		<button type="submit" onclick="validate()">제출</button>
+	</form>
+</body>
+</html>

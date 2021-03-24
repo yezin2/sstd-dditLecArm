@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div.box {
+			border: 1px solid pink;
+			height: 150px;}
+		img {
+			height: 100px;}
+	</style>
+	<script type="text/javascript">
+		var obj = null;
+		
+//		function dragObj(ele) {
+//			obj = ele;
+//		}
+		function dragObj(ev) {
+			ev.dataTransfer.setData("text", ev.target.id);
+			// ==> 대상 요소에 id가 있어야 함!
+		}
+		function dropObj(ev) {
+			ev.preventDefault();
+//			ev.target >> <div>
+//			ev.target >> 이벤트가 발생한 요소(element)
+			if(obj == null){
+				var eleId = ev.dataTranfer.getData("text");
+				obj = document.getElementById(eleId);
+			}
+			ev.target.append(obj);
+			obj = null;
+		}
+		function allowDrop(ev) {
+			ev.preventDefault();
+		}
+	</script>
+</head>
+<body>
+	<div>
+		<p>원하는 물건을 끌어서 옮기세요</p>
+	</div>
+	<div class="box" ondrop="dropObj(event)" ondragover="allowDrop(event)"></div>
+	<div>
+		<!-- <img ondragstart="dragObj(this)" alt="스폰지밥1" src="../../images/1.jpg"> -->
+		<!-- <img id="img2" ondragstart="dragObj(this)" alt="스폰지밥2" src="../../images/2.jpg"> -->
+		<!-- <img id="img3" ondragstart="dragObj(this)" alt="이동욱" src="../../images/dw.jpg"> -->
+		<img ondragstart="obj = this;" alt="스폰지밥1" src="../../images/1.jpg">
+		<img ondragstart="obj = this;" alt="스폰지밥2" src="../../images/2.jpg">
+		<img ondragstart="obj = this;" alt="이동욱" src="../../images/dw.jpg">
+	</div>
+</body>
+</html>

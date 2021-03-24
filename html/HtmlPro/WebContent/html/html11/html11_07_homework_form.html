@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>form</title>
+	<script type="text/javascript">
+		function validate() {
+			/* var idRegExp = /^[a-z0-9]{8,20}$/;
+			var pwRegExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]{8,20}$/;
+			var naRegExp = /^[가-힣]{2,5}$/;
+			var bdRegExp = /^[0-9]$/;
+			var cpRegExp = /^010+(?:\-)[0-9]{3,4}+(?:\-)[0-9]{4}$/;
+			var emRegExp = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zAZ0-9-]+)*$/; */
+			
+			var idRegExp = /^[a-z]([a-z0-9]){7,21}/;
+			var pwRegExp = /(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[$`~!@#$%^&-_/=+]).{8,20}$/;
+			var naRegExp = /^[가-힣]{2,5}/;
+			var bdRegExp = /^[0-9]{0,10}$/;
+			var cpRegExp = /^[0-9]{3}[0-9]{3,4}[0-9]{4}/;
+			var emRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@\w([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+			
+			var regExp = [idRegExp, pwRegExp, naRegExp, bdRegExp, cpRegExp, emRegExp];
+			var id = ["userId", "userPW", "userName", "userBD", "userTel", "userEmail"];
+			var idAlert = ["아이디", "비밀번호", "이름", "생년월일", "휴대폰", "이메일"];
+			
+			var cnt = 0;
+			while(cnt < 6){
+				for(var i=0; i<id.length; i++){
+					var ele = document.getElementById(id[i]);
+					//유효성 검사
+					if(ele.value.trim().length == 0){
+						alert(idAlert[i] + "을(를) 입력해주세요.");
+						ele.focus();
+						return;
+					} else if(i==3){
+						cnt++;
+						console.log("cnt : " + cnt);
+					} else if(ele.value.match(regExp[i])){
+						cnt++;
+						console.log("cnt : " + cnt);
+					} else{
+						alert("유효성 검사에 실패했습니다.");
+						ele.focus();
+						return;
+					}
+					/* if(i == id.length-1) {
+						alert("검사후 제출 완료되었습니다.");
+						document.getElementByTagName("<button>").type = "submit";
+						break;
+					} *///if4
+				}//for
+			}//while
+			if(cnt == 6) {
+				alert("검사후 제출 완료되었습니다.");
+				/* document.getElementByTagName("button").type = "submit";
+				document.getElementByTagName("button").onclick = "none"; */
+			}
+		}
+		
+				/* //자릿수 체크
+				if(i != 1 && i != 4){
+					j = i+i;
+					if(ele.value.length < idArr[j] || 
+							ele.value.length > idArr[j+1]){
+						
+						alert(idAlert[i] + "은(는)  " + idArr[j] 
+								+ "~" + idArr[j+1] + "글자 입니다.");
+						ele.focus();
+						
+						return;
+					}//if3
+					else{
+						if(i == id.length-1) {
+							alert("검사후 제출 완료되었습니다.");
+							document.getElementByTagName("<button>").type = "submit";
+							break;
+						}//if4
+					}//else3
+				}//if2
+			}//if1
+			else {
+				alert(idAlert[i] + "이(가) 비었습니다.");
+				ele.focus();
+				return;
+			}//else1 */
+	</script>
+</head>
+<body>
+	<h3>회원가입</h3>
+	<form action="">
+		아이디(8~20) : <input type="text" id="userId"><br>
+		비밀번호(8~20/Aa0@) : <input type="text" id="userPW"><br>
+		이름(2~5) : <input type="text" id="userName"><br>
+		생년월일 : <input type="date" id="userBD"><br>
+		휴대폰 : <input type="text" id="userTel"><br>
+		이메일 : <input type="email" id="userEmail"><br>
+		<!-- <button type="submit">확인</button>
+		<button type="button" onclick="checkEmpty()">확인(empty)</button>
+		<button type="button" onclick="checkLength()">확인(length)</button> -->
+		<button type="button" onclick="validate()">전송</button>
+		<button type="reset">취소</button>
+	</form>
+</body>
+</html>

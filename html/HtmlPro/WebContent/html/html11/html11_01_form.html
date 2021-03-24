@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+/* 	div {border: 1px solid;} */
+	div.left {
+		height: 200px;
+		float: left;
+	    width: calc(50% - 25px);
+	    text-align: right;
+/* 	    margin-bottom: 50px; */
+	}
+	div.center {
+		height: 200px;
+	    width: 50px;
+	    float: left;
+	    text-align: center;
+	    display: flex;
+    	align-items: center;
+	}
+	div.right {
+		height: 200px;
+		float: right;
+	    width: calc(50% - 25px);
+	    text-align: left;
+	}
+	div.bottom {
+		text-align: center;
+	}
+	select {
+		height: 200px;
+		width: 150px;		
+	}
+	button {
+		width: 30px;
+	}
+	div.bottom button {
+		width: 100px;
+	}
+	</style>
+	<script type="text/javascript">
+	function moveRight(param){
+		console.log(param);
+		
+		var leftSel = document.getElementById("left");
+		var rightSel = document.getElementById("right");
+		
+// 		leftSel.length ==> select의 option 개수
+// 		leftSel[i] ==> select의 i번째 option
+		for(var i=0 ; i<leftSel.length ; i++) {
+			// 선택된 것 옮길때
+			if(param == undefined) {
+				
+				// leftSel[i].selected ==> 선택이 된 상태면 true, 아니면 false
+				// i번째 옵션이 선택되었는지 여부
+				if(leftSel[i].selected) {
+					rightSel.append(leftSel[i]);
+					i--;
+				}
+				
+			} else {
+				// 전체 옮기기
+				rightSel.append(leftSel[i]);
+				i--;
+			}
+		}
+		
+	}
+	
+	function moveLeft(param){
+		
+	}
+	</script>
+</head>
+<body>
+	<div class="top">
+		<h2>select 객체 예제</h2>
+	</div>
+	<div class="left">
+		<select id="left" multiple="multiple">
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+			<option>4</option>
+			<option>5</option>
+		</select>
+	</div>
+	<div class="center">
+		<div>
+			<button type="button" onclick="moveRight()">&gt;</button><br>
+			<button type="button" onclick="moveRight('all')">&gt;&gt;</button><br>
+			<button type="button" onclick="moveLeft()">&lt;</button><br>
+			<button type="button" onclick="moveLeft('all')">&lt;&lt;</button>
+		</div>
+	</div>
+	<div class="right">
+		<select id="right" multiple="multiple">
+		</select>
+	</div>
+	<div class="bottom">
+		<input type="text" >
+		<button type="button">추가</button>
+	</div>
+</body>
+</html>
