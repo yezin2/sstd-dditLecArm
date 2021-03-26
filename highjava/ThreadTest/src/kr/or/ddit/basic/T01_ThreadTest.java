@@ -17,5 +17,18 @@ public class T01_ThreadTest {
 		for(int i=1; i<=200; i++) {
 			System.out.print("$");
 		}
+		for(int i=0; i<10; i++) {
+			//경주마(thread)가 지나간 거리를 *로 찍음
+			for(int j=0; j<i; j++) {
+				System.out.print("*");
+			}
+			//현재 경주마(thread)의 위치
+			System.out.print("♘");
+			//경주마(thread)가 달려야 할 남은 거리
+			for(int j=9; j>i; j--) {
+				System.out.print("-");
+			}
+			System.out.println();
+		}
 	}
 }
