@@ -52,6 +52,7 @@ public class HorseRacing {
 		System.out.println("경기 끝...");
 		System.out.println("--------------------------");
 		System.out.println("경기결과");
+		
 		for(Horse hRace : horses) {
 			System.out.println(hRace.getRank() + "위 : " + hRace.getName1());
 		}
@@ -60,22 +61,22 @@ public class HorseRacing {
 
 //말 클래스 (말 도착 순위 : Thread, 순위 순서로 배열 위치 변경 comparable)
 class Horse extends Thread implements Comparable<Horse>{
-	private String name1;
+	private String name;
 	private int rank;
 	
 	//생성자
 	public Horse(String name) {
-		this.name1 = name;
+		this.name = name;
 		this.rank = rank;
 	}
 	
 	//name값 꺼내오기
 	public String getName1() {
-		return name1;
+		return name;
 	}
 	//name값 넣기
 	public void setName1(String name) {
-		this.name1 = name;
+		this.name = name;
 	}
 
 	//rank값 꺼내오기
@@ -91,13 +92,13 @@ class Horse extends Thread implements Comparable<Horse>{
 	public void run() {
 		//거리는 10으로 잡음
 		for(int i=0; i<50; i++) {
-			System.out.println(name1 + " : ");//경주마 이름 출력
+			System.out.println(name + " : ");//경주마 이름 출력
 			//경주마(thread)가 지나간 거리를 *로 찍음
 			for(int j=0; j<i; j++) {
 				System.out.print("*");
 			}
 			//현재 경주마(thread)의 위치
-			System.out.print("♘");
+			System.out.print("♘>");
 			//경주마(thread)가 달려야 할 남은 거리
 			for(int j=49; j>i; j--) {
 				System.out.print("-");
@@ -109,6 +110,9 @@ class Horse extends Thread implements Comparable<Horse>{
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			if(i==49) {
+				System.out.println(">>>>>>>>>>>>>>" + name + "도착");
 			}
 		}
 		//rank값(순위) 넣어주기
