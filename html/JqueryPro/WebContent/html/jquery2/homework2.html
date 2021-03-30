@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>eleselector</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//이미지 태그 사이즈 변경
+			$("img").css("height", "100px").css("width", "85px");
+			// type이 button인 input 요소와 href가 'mailto'로 시작하는 a요소의 배경색 노란색으로 변경
+			$("input[type=button]").css("background-color", "yellow");
+			$("a[href^='mailto']").css("background-color", "yellow");
+			// href가 'power2c'를 포함하는 모든 a 요소의 밑줄 없음
+			$("a[href*='power2c']").css("text-decoration", "none");
+			// img 요소 중 id 가 'img1'인 것 제외하고 테두리 색 파랑
+			$("img[id!=img1]").css("border", "2px solid blue");
+			// src가 'png'로 끝나는 img 요소의 테두리 색 초록
+			$("img[src*=png]").css("border-color", "green").css("width", "200px").css("height", "150px");
+			// alt 속성을 갖는 이미지 요소의 테두리 두께 5px
+			$("img[alt]").css("border", "5px red solid");
+			// title이 'named' 단어를 포함하는 img 요소 두 줄 테두리
+			$("img[title*=named]").css("border-style", "double");
+			// id가 'little'이거나 'little-'로 시작하는 img 요소 점선 테두리
+			$("img[id|=little]").css("border-style", "dotted");
+			// type이 'text'인 input 요소의 테두리 변경
+			$("input[type=text]").css("border", "3px double red");
+		});
+	</script>
+	<style type="text/css">
+		h1{
+			border-style: 
+		}
+	</style>
+</head>
+<body>
+	<a href="http://www.ddit.or.kr">(재)대덕인재 개발원</a><br><br>
+	<a href="mailto:power2c@ddit.or.kr">빠워에게 메일보내</a>
+	<div>
+		<p>Some Images : </p>
+	</div>
+	<div>
+		<img alt="ig1" id="img1" src="../../images/dw.jpg">
+		<img id="little" src="../../images/dw.jpg">
+		<img alt="ig2" id="little-bear" src="../../images/dw.jpg">
+		<img title="name_dw" src="../../images/dw.jpg">
+		<img alt="ig3" title="named_dw" src="../../images/dw.jpg">
+		<img alt="ig4" src="../../images/dw.jpg">
+		<img src="../../images/dw.png">
+	</div>
+	<div>
+		이곳은 ID속성이 SomeDiv인 &lt;div&gt;태그 입니다.
+	</div>
+	Text : <input type="text"><br>
+	<button type="button">Submit</button>
+	<input type="button" value="클릭~~">
+</body>
+</html>
