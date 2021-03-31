@@ -16,7 +16,7 @@ public class TcpServer {
 		//accept() 메서드는 client에서 연결요청이 올 때까지 계속 기다린다.
 		//연결 요청이 오면 Socket객체를 생성해서 Client의 Socket과 연결한다.
 		
-		Socket socket = server.accept();//client 요청 받아들임.
+		Socket socket = server.accept();//client 요청을 받아서 소켓이 정상적으로 만들어질때 까지 block처리됨
 		
 		//이 이후는 클라이언트와 연결된 후의 작업을 진행하면 된다.
 		System.out.println("접속한 클라이언트 정보");
