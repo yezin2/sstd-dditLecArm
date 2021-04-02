@@ -19,7 +19,7 @@ public class UdpServer {
 		DatagramPacket inPacket, outPacket;
 		
 		byte[] inMsg = new byte[1]; //패킷 수신용
-		byte[] outMsg;				//패킷 송신용
+		byte[] outMsg = null;				//패킷 송신용
 		
 		while (true) {
 			// 데이터를 수신하기 위한 패킷을 생성한다.

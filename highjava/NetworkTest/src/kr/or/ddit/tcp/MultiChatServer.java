@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MultichatServer {
+public class MultiChatServer {
 	// 대화명, 클라이언트의 Socket을 저장하기 위한 Map변수 선언
 	Map<String, Socket> clients;
 	
 	//생성자
-	public MultichatServer() {
-		// 동기화 처리가 가능하도록 Map 객체 생성
+	public MultiChatServer() {
+		// 동기화 처리가 가능하도록 Map 객체 생성 + 아무때나 아무나 말할수 있게 함(실시간 대화기능)
 		clients = Collections.synchronizedMap(new HashMap<String, Socket>());
 	}
 	
@@ -28,7 +28,7 @@ public class MultichatServer {
 			System.out.println("서버가 시작되었습니다.");
 			while (true) {
 				//클라이언트의 접속을 대기한다.
-				socket = serverSocket.accept();
+				socket = serverSocket.accept();//접속을 대기시킴
 				
 				System.out.println("[" + socket.getInetAddress() 
 								+ " : " + socket.getPort()
@@ -38,6 +38,17 @@ public class MultichatServer {
 				receiver.start();
 				
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void earMessage(String msg, String from, String to) {
+		try {
+			
+			//대화명에 해당하는 socket의 OutputStream 구하기
+			DataOutputStream dos = 
+					new DataOutputStream(clients.get(to).getOutputStream());
+			dos.writeUTF(to + "에게 들어온 귓속말 : [" + from + "]" + msg);//메시지 보내기
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -60,7 +71,7 @@ public class MultichatServer {
 				dos.writeUTF(msg);// 메시지 보내기
 				
 			} catch (IOException e) {
-				// TODO: handle exception
+				e.printStackTrace();
 			}
 		}
 	}
@@ -71,8 +82,14 @@ public class MultichatServer {
 	 */
 	public void sendMessage(String msg, String from) {
 		//Map에 저장된 유저의 대화명 리스트 추출(key값 구하기)
+		String[] earMsg = msg.split(" ", 3);
+		if(earMsg[0].equals("/w")) {
+			earMessage(earMsg[2], from, earMsg[1]);
+			return; // 암튼 해야댐
+		}
 		Iterator<String> it = clients.keySet().iterator();
 		while(it.hasNext()) {
+			
 			try {
 				String name = it.next(); // 대화명
 				
@@ -85,6 +102,7 @@ public class MultichatServer {
 			}
 		}
 	}
+	
 	// 서버에서 클라이언트로 메시지를 전송할 스레드를 Inner클래스로 정의
 	// >> Inner클래스에서는 부모 클래스의 멤버들을 직접 사용할 수 있다.
 	class ServerReceiver extends Thread{
@@ -134,6 +152,10 @@ public class MultichatServer {
 				System.out.println("현재 접속자 수는 " + clients.size() + "명 입니다.");
 			}
 		}
+	}
+	
+	public static void main(String[] args) {
+		new MultiChatServer().startServer();
 	}
 }
 

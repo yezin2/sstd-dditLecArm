@@ -20,7 +20,7 @@ public class MultichatClient {
 		
 		try {
 			
-			socket = new Socket("192.168.43.132", 7777);
+			socket = new Socket("192.168.43.21", 7777);
 			
 			System.out.println("서버에 연결되었습니다.");
 			
@@ -63,7 +63,7 @@ public class MultichatClient {
 		public void run() {
 			try {
 				// 시작하자 마자 자신의 대화명을 서버로 전송
-				if(dos != null) {
+				if(dos != null) {//대화명이 공백이 되지 않게함
 					dos.writeUTF(name);
 				}
 				
