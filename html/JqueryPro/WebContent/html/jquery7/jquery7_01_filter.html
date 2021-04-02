@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+// 			$("li:first,li:last").css("background-color", "yellow");
+			$("ul li").last().css("background-color", "yellow");
+			$("ul li").first().css("background-color", "yellow");
+// 			$("li:eq(5)").css("background-color", "red");
+			$("ul li").eq(5).css("background-color", "red");
+// 			$("li:lt(4)").css("font-weight", "bold");
+			$("ul li").slice(0,4).css("font-weight", "bold");
+// 			$("li:gt(3)").css("font-size", "0.5em");
+			$("ul li").slice(4).css("font-size", "0.5em");
+			//////////////////////////////////////////////////
+			$("ol li:even").css("background-color", "yellow");
+		});
+	</script>
+</head>
+<body>
+	<ul>
+		<li>ONE</li>
+		<li>TWO</li>
+		<li>THREE</li>
+		<li>FOUR</li>
+		<li>FIVE</li>
+		<li>SIX</li>
+		<li>SEVEN</li>
+		<li>EIGHT</li>
+		<li>NINE</li>
+	</ul>
+	<hr>
+	<ol>
+		<li>1억원</li>
+		<li>2억원</li>
+		<li>3억원</li>
+		<li>4억원</li>
+		<li>5억원</li>
+	</ol>
+</body>
+</html>
