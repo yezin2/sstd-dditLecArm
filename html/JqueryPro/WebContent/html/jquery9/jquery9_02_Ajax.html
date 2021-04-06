@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<style type="text/css">
+	
+		th{
+			border: 3px solid yellow;
+			text-align: center;}
+		tr,td{
+			border: 3px solid red;
+			text-align: center;}
+		th:hover, td:hover{
+			background-color: pink;}
+	</style>
+</head>
+<body>
+	<form action="../jquery/jquex1_basic.html" method="get" id="fm">
+		NAME : <input type="text"><br>
+		AGE : <input type="text"><br>
+		<button type="submit">submit</button>
+		<button type="button">POST</button>
+		<button type="button" onclick="fnGet()">GET</button><br>
+		<hr>
+		<button type="button" onclick="fnAjax()">AJAX</button>
+		<hr>
+		<button type="button" onclick="fnText()">TEXT</button>
+		<button type="button" onclick="fnHtml()">HTML</button>
+		<button type="button" onclick="fnJson()">JSON</button>
+		<button type="button" onclick="fnJsonArr()">JSONARR</button>
+		<button type="button" onclick="fnJsonList()">JSONLIST</button>
+		<button type="button" onclick="fnJsonListTable()">JSONTABLE</button>
+	</form>
+	<div id="res">
+		
+	</div>
+</body>
+<script type="text/javascript">
+	function fnGet() {
+		//submit실행
+		var fm = $("fm");//<form>
+		fm.action = "ex1.html?userId=test01&password=asdf";//url세팅
+		fm.method = "post";
+		fm.submit();
+	}
+	function fnAjax() {
+		$.ajax({
+			url : "intro.html",
+// 			type : "GET",
+// 			data : {},
+			dataType: "text",
+			success: function(data) {
+				$("#res").html(data);
+			},
+			error: function() {
+				
+			}
+		});
+	}
+	function fnText() {
+		$.ajax({
+			url : "/JqueryPro/html/sample/data_text.txt",
+			type : "GET",
+// 			data :,
+// 			dataType:,
+			success: function(data) {
+				$("#res").html(data);
+			},
+			error: function() {
+				
+			}
+		});
+	}
+	function fnJson() {
+		$.ajax({
+			url : "/JqueryPro/html/sample/data_json_obj.txt",
+			dataType : "json",
+			success: function(data) {
+// 				$("#res").html(data);
+				console.log(data);
+				console.log(data.name);
+				
+				var str = "";
+				str += "이름 : " + data.name + "<br>"
+					+ "나이 : " + data.age + "<br>"
+					+ "성별 : " + data.gender + "<br>"
+					+ "직업 : " + data.job;
+				
+				$("#res").html(str);
+				
+			},
+			error: function() {
+				
+			}
+		});
+	}
+	function fnJsonArr() {
+		$.ajax({
+			url : "/JqueryPro/html/sample/data_json_arr.txt",
+			dataType : "json",
+			success: function(data) {
+				console.log(data);
+				
+				var str = "<ol>";
+				for(var i=0; i<data.length; i++){
+					str += "<li>" + data[i] + "</li>"
+				}
+// 				$.each(data, function(idx) {
+// 					str += "<li>" + data[idx] + "</li>";
+// 				});
+				str += "</ol>";
+				
+				$("#res").html(str);
+				
+			}
+		});
+	}
+	function fnJsonList() {
+		$.ajax({
+			url : "/JqueryPro/html/sample/data_json_list.txt",
+			dataType : "json",
+			success: function(data) {
+				console.log(data);
+				
+				var str = "배우목록<br><br>";
+				for(var i=0; i<data.length; i++){
+					str += "이름 : " + data[i].name + "<br>"
+						 + "나이 : " + data[i].age + "<br>"
+						 + "성별 : " + data[i].gender + "<br>"
+						 + "직업 : " + data[i].job + "<br>";
+					str += "<br>";
+				}
+// 				$.each(data, function(idx) {
+// 					str += "<li>" + data[idx] + "</li>";
+// 				});
+// 				str += "</ol>";
+				$("#res").html(str);
+			},
+			error: function() {
+				
+			}
+		});
+	}
+	function fnJsonListTable() {
+		$.ajax({
+			url : "/JqueryPro/html/sample/data_json_list.txt",
+			dataType : "json",
+			success: function(data) {
+				console.log(data);
+				
+				var str = "<table>"
+						+ "<tr><th>이름</th>"
+						+ "<th>나이</th>"
+						+ "<th>성별</th>"
+						+ "<th>직업</th></tr>";
+				for(var i=0; i<data.length; i++){
+					str += "<tr><td>" + data[i].name + "</td>"
+						 + "<td>" + data[i].age + "</td>"
+						 + "<td>" + data[i].gender + "</td>"
+						 + "<td>" + data[i].job + "</td></tr>";
+				}
+				
+				str += "</table>";
+				$("#res").html(str);
+			},
+			error: function() {
+				
+			}
+		});
+	}
+</script>
+</html>
