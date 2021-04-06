@@ -62,7 +62,10 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="80" protocol="HTTP/1.1" redirectPort="8443"/>
+    
+	<!-- http://localhost/ServletTest/T02_ServletTest?name=김선호 >>url을 인코딩해야함
+        아래와 같이 인코딩해야함 === URIEncoding = "UTF-8" -->
+    <Connector connectionTimeout="20000" port="80" protocol="HTTP/1.1" URIEncoding="UTF-8" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
