@@ -27,7 +27,7 @@ public class T01_ServletLifeCycle
 					throws ServletException, IOException {
 		// 실제적인 작업 수행이 시작되는 지점.
 		// (자바의 main메서드 역할)
-		super.service(arg0, arg1);
+		super.service(arg0,  arg1);
 	}
 	
 	@Override
@@ -35,6 +35,7 @@ public class T01_ServletLifeCycle
 			HttpServletResponse resp) throws ServletException, IOException {
 		// 메서드 방식이 get 인 경우 호출됨.
 		System.out.println("doGet() 호출됨.");
+		throw new ServletException("서블릿 예외 발생했어여!!");
 	}
 	
 	@Override
