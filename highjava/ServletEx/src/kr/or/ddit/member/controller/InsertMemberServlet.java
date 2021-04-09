@@ -57,8 +57,8 @@ public class InsertMemberServlet extends HttpServlet{
 		// getRequestDispatcher()에서는 이미 getContextPath()를 포함하고 있기 때문에 써줄 필요 없슴
 		String redirectUrl = req.getContextPath() + "/member/list.do?msg=" + URLEncoder.encode(msg, "UTF-8");
 		//redirect는  insert.do와 list.do를 모두 요청함
-//		resp.sendRedirect(redirectUrl);
+		resp.sendRedirect(redirectUrl);
 		//getRequestDispatcher는 insert.do만 요청해서 그 안에서 작업 처리됨
-		req.getRequestDispatcher("/member/list.do?msg="+ URLEncoder.encode(msg, "UTF-8")).forward(req, resp);
+//		req.getRequestDispatcher("/member/list.do?msg="+ URLEncoder.encode(msg, "UTF-8")).forward(req, resp);
 	}
 }
