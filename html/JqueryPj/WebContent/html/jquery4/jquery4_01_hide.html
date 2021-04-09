@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div {
+			border : 3px dotted red;
+			position: relative;}
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+			$("#btnHide").click(function() {
+				$("p").hide();
+			});
+			$("#btnShow").click(function() {
+				$("p").show();
+			});
+			$("#btnToggle").click(function() {
+// 				$("p").toggle();
+				$("div").slideToggle();
+			});
+			$("#btnFadeIn").click(function() {
+// 				$("p").FadeIn();
+				$("p").slideDown();
+			});
+			$("#btnFadeOut").click(function() {
+// 				$("p").fadeOut();
+				$("p").slideUp();
+			});
+			$("#btnFadeTo").click(function() {
+				$("div").fadeTo(2000, 0.3);
+			});
+			$("#btnAni").click(function() {
+				$("#tmp").animate({left: '300px'});
+				// ==> $("#tmp") 의 포지션이 static이면 안됨
+			});
+		});
+	</script>
+</head>
+<body>
+	<p>이 영역은 버튼을 누르면 사라졌다가 다시 나타나지용</p>
+	<button type="button" id="btnHide">Hide</button>
+	<button type="button" id="btnShow">Show</button>
+	<br><br>
+	<button type="button" id="btnFadeIn">FadeIn</button>
+	<button type="button" id="btnFadeOut">FadeOut</button>
+	<br><br>
+	<button type="button" id="btnToggle">Toggle</button>
+	<button type="button" id="btnFadeTo">To</button>
+	<button type="button" id="btnAni">animate</button>
+	<div id="tmp">
+		안녕하십니까?
+		<br>
+		안녕히 가십시오.
+	</div>
+</body>
+</html>

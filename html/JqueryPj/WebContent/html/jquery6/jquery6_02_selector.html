@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("p").click(function() {
+				//부모가 div이면 alert()주기
+				if($(this).parent().is("div")){
+					alert("부모가 div 입니다.");
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<p>div안에 p</p>
+	</div>
+	<p>그냥 p</p>
+</body>
+</html>

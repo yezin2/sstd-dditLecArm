@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+		div{
+			background-color: lightgray;
+			border: 5px soild gray;}
+		button {
+			color: white;
+			background-color: hotpink;}
+		img {
+			height: 200px;}
+	</style>
+	
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#btnShow").click(function() {
+				$("img").show();
+			});
+			$("#btnHide").click(function() {
+				$("img").hide();
+			});
+			$("#btnSlideUp").click(function() {
+				$("img").slideUp();
+			});
+			$("#btnSlideDown").click(function() {
+				$("img").slideDown();
+			});
+			$("#btnSlideToggle").click(function() {
+				$("img").slideToggle();
+			});
+			$("#btnFadeIn").click(function() {
+				$("img").fadeIn(1000);
+			});
+			$("#btnFadeOut").click(function() {
+				$("img").fadeOut(2000);
+			});
+			$("#btnFadeTo").click(function() {
+				$("img").fadeTo(2000, 0.1);
+			});
+			$("#btnFadeToggle").click(function() {
+				$("img").fadeToggle();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<button type="button" id="btnShow">Show</button>
+		<button type="button" id="btnHide">Hide</button>
+		<button type="button" id="btnSlideUp">SlideUp</button>
+		<button type="button" id="btnSlideDown">SlideDown</button>
+		<button type="button" id="btnSlideToggle">SlideToggle</button>
+		<button type="button" id="btnFadeIn">FadeIn</button>
+		<button type="button" id="btnFadeOut">FadeOut</button>
+		<button type="button" id="btnFadeTo">FadeTo</button>
+		<button type="button" id="btnFadeToggle">FadeToggle</button>
+		<br><br>
+		<img alt="" src="../../images/1.jpg">
+	</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Visible Filter</title>
+	<style type="text/css">
+		div:parent{
+			font: }
+	</style>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			/* EX1 */
+			$("#btnhidden").click(function() {
+				$("#ex1 :hidden").each(function() {
+					alert($(this).html());
+					console.log(this);
+				});
+			});//hiddenBtn
+			$("#btnvisible").click(function() {
+				$("#ex1 :visible").each(function() {
+					alert($(this).html());
+					console.log(this);
+				});
+			});//visibleBtn
+			
+			/* EX2 */
+			$("#btn1").click(function() {
+				var str = "";
+				$(":hidden").each(function() {
+//	 				console.log();
+					str += "태그명 : " + $(this).prop("tagName")
+							+ "\n" + "유형 : " + this.type
+							+ "\n" + "값 : " + this.value;
+				});
+				alert(str);
+			});
+			$("#btn2").click(function() {
+				var str = "";
+				$(":visible").each(function() {
+//	 				console.log();
+					str += "태그명 : " + $(this).prop("tagName")
+							+ "\n" + "유형 : " + this.type
+							+ "\n" + "값 : " + this.value;
+				});
+				alert(str);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="ex1">
+		<p>보이는 문단</p>
+		<p style="visibility: hidden;">숨겨진 문단</p>
+		<p style="display: none;">자리를 차지하지 못한 문단</p>
+		<p style="opacity: 0;">투명한 문단</p>
+		
+	   	<br><hr color="red"><br>
+	   	
+	   	<button id="btnhidden">hidden요소</button>
+	   	<button id="btnvisible">visible요소</button>
+	</div>
+	<br><br><hr><br><br><!-- ---------------------------------------- -->
+	<div id="ex2">
+		ID : <input type="text" name="userId" value="hong"><br>
+		<span style="display: none;">ID가 중복됨</span>
+		
+		NAME : <input type="text" name="userName" value="길동"><br>
+		<span style="display: none;">이름이 중복됨</span>
+		
+		GENDER : 
+			<input type="radio" name="userGender" value="M" id="genderMail">
+			<label for="genderMail">남자</label>
+			<input type="radio" name="userGender" value="F" id="genderFmail">
+			<label for="genderFemail">여자</label>
+	<!-- 	<input type="hidden" name="userAge" value="33"><br> -->
+		<br>
+		<button type="button" id="btn1">hidden</button>
+		<button type="button" id="btn2">visible</button>
+		
+		<input type="hidden" name="userAge" value="24"><br>
+	</div>
+</body>
+</html>

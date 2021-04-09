@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/* EX1 */
+			$("#ex1 :enabled").css("border", "3px solid blue");
+			$("#ex1 :disabled").css("border", "3px solid red");
+			/* EX2 */
+			$("#ex2 button").click(function() {
+			//화면에 ":checked" 사용할 수 있는 요소가 한개 밖에 없으므로 가능
+				var str = "선택된 값 : ";
+				//case1) for문 사용
+				for(var i=0; objs.length; i++){
+					var val = $(this).val();
+					str += val + ", ";
+				}				
+				str = str.substr(0, str.length-2);
+				alert(str);
+
+				str = str.substr(8, str.length);
+				$("#res").html(str);
+				
+				//case2)each문 사용 - if문으로 **줄을 대체함
+				$(":checked").each(function(idx, item) {
+// 				console.log();
+					var val = $(this).val();
+					
+					if(idx == 0) str += val;
+					else if(idx > 0) str += ", " + val;
+//  				**str += val + ", ";
+				});
+								
+//  				**str = str.substr(0, str.length-2);
+				alert(str);
+
+				str = str.substr(8, str.length);
+				$("#res").html(str);
+				
+				
+				//case3) 체크박스의 value가 코드값인 경우
+				$(":checked").each(function(idx, item) {
+					var val = "";
+					//체크박스의 id와 라벨의 for가 연결되어 있으므로 (값이 같음)
+					var tmpId = $(this).attr("id");
+					val = $("label[for=" + tmpId+ "]").text();
+					//>>$("label[for=hobby1]")
+					
+					if(idx == 0) str += val;
+					else if(idx > 0) str += ", " + val;
+//	  				str += val + ", ";
+				});
+				alert(str);
+
+				str = str.substr(8, str.length);
+				$("#res").html(str);
+				
+				//case4) 체크박스의 value가 코드값인 경우 - 형제요소 찾기
+				// 체크박스 바로 뒤에 라벨이 위치함
+				$(":checked").each(function(idx, item) {
+					var val = "";
+					console.log($(this).)
+					var tmpId = $(this).attr("id");
+					val = $("label[for=" + tmpId+ "]").text();
+					//>>$("label[for=hobby1]")
+					
+					if(idx == 0) str += val;
+					else if(idx > 0) str += ", " + val;
+//	  				str += val + ", ";
+				});
+				alert(str);
+
+				str = str.substr(8, str.length);
+				$("#res").html(str);
+			});
+			
+			/* EX3 */
+			$("button", "#ex3").click(function() {
+				var str = "";
+				$("[name=spring] :selected", "#ex3").each(function() {
+					str += #(this).text() + ", ";
+				});
+			});
+			str = str.substr(0, str.length-2);
+			$("span", "#ex3").text(str);
+		});
+	</script>
+</head>
+<body>
+	<form id="ex1">
+		<input type="text" name="id"><br>
+		<input type="password" name="pass"><br>
+		<select name="disSelect" disabled>
+			<option>option1</option>
+			<option>option2</option>
+			<option>option3</option>
+		</select>
+		<br>
+		<textarea name="enTextarea" rows="10" cols="20">text</textarea>
+		<br>
+		<input type="button" value="확인" disabled>
+	</form>
+	<br><br><hr><br><br>
+	<form id="ex2">
+		취미 : 
+			<input type="checkbox" value="A01" id="h1" checked>
+			<label for="trip">여행</label>
+			<input type="checkbox" value="A02" id="h2">
+			<label for="read">독서</label>
+			<input type="checkbox" value="A03" id="h3">
+			<label for="exer">운동</label>
+			<input type="checkbox" value="A04" id="h4">
+			<label for="fish">낚시</label>
+<!-- 			<input type="checkbox" value="여행" id="h1" checked>
+			<label for="trip">여행</label>
+			<input type="checkbox" value="독서" id="h2">
+			<label for="read">독서</label>
+			<input type="checkbox" value="운동" id="h3">
+			<label for="exer">운동</label>
+			<input type="checkbox" value="낚시" id="h4">
+			<label for="fish">낚시</label> -->
+			<br><br>
+			<button type="button">전송</button>
+			<br><br>
+			<div>
+				선택 결과 : <span id="res"></span>
+			</div>
+	</form>
+	<br><br><hr><br><br>
+	<form id="ex3">
+		봄소식 : 
+		<select name="spring" id="spring" multiple size="6">
+			<option>개나리</option>
+			<option selected>진달래</option>
+			<option>민들레</option>
+			<option selected>벚꽃</option>
+			<option>목련</option>
+			<option>철쭉</option>
+		</select><br>
+		<button type="button">전송</button><br><br>
+		<div>
+			선택결과 : <span></span>
+		</div>
+	</form>
+</body>
+</html>

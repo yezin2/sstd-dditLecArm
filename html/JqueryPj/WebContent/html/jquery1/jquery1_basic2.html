@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>JQUERY 기본</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+</head>
+<body>
+	<h1 onclick="hide();">JQuery 테스트</h1>
+	<h2 class="sample">JQuery 테스트</h2>
+	<h2 id="tmp">JQuery 테스트</h2>
+	<h2 title="내맘">JQuery 테스트</h2>
+	<h2 title="니맘">JQuery 테스트</h2>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("body").css("background-color", "yellow");
+	$("h1").css("color", "blue");
+	$(".sample").css("color", "green");
+	$("#tmp").css("color", "red");
+	
+	//문서가 로딩되고 나서
+	//h2 요소에 클릭 이벤트 설정 해주기
+	$("h2").click(function(){
+		$(this).hide();// 클릭 이벤트가 발생한 객체만 숨김!
+	});
+	
+});
+
+function hide(){
+	$("h1").hide();
+}
+
+</script>
+</html>
+
+
+
+
+
+

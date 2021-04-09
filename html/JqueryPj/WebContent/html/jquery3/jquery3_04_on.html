@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="../../js/jquery-3.6.0.js"></script>
+	<style type="text/css">
+		.emp {
+			}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//p태그에 마우스를 올리면 글자사 빨간색 1.5배로 커짐
+			//p태그에 마우스를 내리면 원래대로 돌아간다.
+			
+			//방법1) mouseover/mouseout 이벤트 바인딩
+// 			$("p").mouseover(function() {});
+// 			$("p").mouseout(function() {});
+			
+			//방법2) on메서드 사용해서 이벤트 바인딩
+// 			$("p").on("mouseover", function() {
+// 				$(this).css("color", "red").css("font-size", "1.5em");
+// 			});
+			
+// 			$("p").on("mouseout", function() {
+// 				$(this).css("color", "black").css("font-size", "1em");
+// 			});
+
+			//방법3) on메서드 한번에 이벤트 바인딩
+			$("p").on({
+				mouseover : function() {
+					this.className = "emphasis";//<p id="~" name="~" class="~">
+				}
+				mouseout : function() {
+					this.className = "";
+				}
+			});
+			
+			// 방법4) toggle 메서드 이용 - jquery 메서드
+// 			$("p").on("mouseover mouseout", function(){
+// 				$(this).toggleClass("emphasis");
+// 			});
+		});
+	</script>
+</head>
+<body>
+	<p>마우스를 올려보셍</p>
+</body>
+</html>
