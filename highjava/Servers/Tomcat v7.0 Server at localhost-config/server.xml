@@ -65,7 +65,7 @@
     
 	<!-- http://localhost/ServletTest/T02_ServletTest?name=김선호 >>url을 인코딩해야함
         아래와 같이 인코딩해야함 === URIEncoding = "UTF-8" -->
-    <Connector connectionTimeout="20000" port="80" protocol="HTTP/1.1" URIEncoding="UTF-8" redirectPort="8443"/>
+    <Connector URIEncoding="UTF-8" connectionTimeout="20000" port="80" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -129,7 +129,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log." suffix=".txt"/>
 
-      <Context docBase="ServletTest" path="/ServletTest" reloadable="true" source="org.eclipse.jst.jee.server:ServletTest"/></Host>
+      <Context docBase="ServletTest" path="/ServletTest" reloadable="true" source="org.eclipse.jst.jee.server:ServletTest"/><Context docBase="ServletEx" path="/ServletEx" reloadable="true" source="org.eclipse.jst.jee.server:ServletEx"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -27,7 +27,7 @@ public class T02_ServletTest extends HttpServlet{
 		// 반드시 request에서 값을 사져오기 전에 먼저 설정해야 적용됨.
 		// http://localhost/ServletTest/T02_ServletTest?name=김선호 >>url을 인코딩해야함
 		
-		req.setCharacterEncoding("utf-8");
+//		req.setCharacterEncoding("utf-8");
 		
 		// 요청정보로부터 name값을 가져옴.
 		String name = req.getParameter("name");
@@ -35,7 +35,7 @@ public class T02_ServletTest extends HttpServlet{
 		System.out.println("name >> " + name);
 		
 		// 응답메시지 인코딩 설정(Content-Type의 charset = UTF-8)//body를 인코딩한거임
-		resp.setCharacterEncoding("UTF-8");
+//		resp.setCharacterEncoding("UTF-8");
 		
 		// 응답메시지의 컨텐트 타입 설정
 		resp.setContentType("text/plain");

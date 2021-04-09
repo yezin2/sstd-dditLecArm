@@ -73,7 +73,7 @@ public class T05_ServletCookieTest extends HttpServlet {
 			for(Cookie cookie : cookies) {
 				if((cookie.getName()).equals("userId")) {
 					//쿠키제거
-					cookie.setMaxAge(0);
+					cookie.setMaxAge(0);//지속시간 (초단위)
 					
 					resp.addCookie(cookie);
 					out.println("삭제한 쿠키 : " + cookie.getName() + "<br>");
