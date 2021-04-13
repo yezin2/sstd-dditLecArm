@@ -15,8 +15,15 @@ public class MemberDao extends BaseDao {
 		smc = super.getSqlMapClient();
 	}
 	
-	public List<MemberVO> retrieveMemberList(MemberVO memberVo) throws SQLException {
-		return smc.queryForList("member.retrieveMemberList", memberVo);
+	public MemberVO retrieveMember(String memId) throws SQLException{
+		return (MemberVO)smc.queryForObject("member.retrieveMember", memId);
 	}
 	
+	public List<MemberVO> retrieveMemberList(MemberVO memberVO) throws SQLException {
+		return smc.queryForList("member.retrieveMemberList", memberVO);
+	}
+	
+	public void createMember(MemberVO memberVO) throws SQLException {
+		smc.insert("member.createMember", memberVO);
+	}
 }

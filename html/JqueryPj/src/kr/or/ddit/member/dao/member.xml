@@ -4,8 +4,48 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="member">
-
-	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+	<insert id="createMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
+		INSERT INTO TB_MEMBER (
+			MEM_ID
+			, MEM_PASS
+			, MEM_NAME
+			, MEM_BIR
+			, MEM_ZIP
+			, MEM_ADD1
+			, MEM_ADD2
+			, MEM_HP
+			, MEM_MAIL
+			, RECV_EMAIL_YN
+			, MEM_JOB
+			, MEM_LIKE
+			, MEM_MEMORIAL_TYPE
+			, MEM_MEMORIAL_DATE
+			, MEM_MILEAGE
+			, MEM_COMMENT
+			, MEM_DELETE
+		) VALUES (
+			  #memId#
+			, #memPass#
+			, #memName#
+			, #memBir#
+			, #memZip#
+			, #memAdd1#
+			, #memAdd2#
+			, #memHp#
+			, #memMail#
+			, #recvEmailYn#
+			, #memJob#
+			, #memLike#
+			, #memMemorialType#
+			, #memMemorialDate#
+			, #memMileage#
+			, #memComment#
+			, #memDelete#
+		)
+	</insert>
+	<update id="updateMember"></update>
+	
+	<select id="retrieveMember" parameterClass="String">
 		SELECT MEM_ID                memId             
              , MEM_PASS              memPass           
              , MEM_NAME              memName           
@@ -16,20 +56,40 @@
              , MEM_HP                memHp             
              , MEM_MAIL              memMail           
              , RECV_EMAIL_YN         recvEmailYn      
-             , MEM_JOB               memJob            
-             , MEM_LIKE              memLike           
-             , MEM_MEMORIAL_TYPE     memMemorialType  
-             , MEM_MEMORIAL_DATE     memMemorialDate  
-             , NVL(MEM_MILEAGE, 0)   memMileage        
-             , MEM_COMMENT           memComment        
-             , MEM_DELETE            memDelete         
-          FROM TB_MEMBER
-         WHERE 1=1
+             , MEM_JOB               memJob      
+		FROM TB_MEMBER
+		WHERE MEM_ID = #memId#
+	</select>
+	
+	
+	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT A.MEM_ID                memId             
+             , A.MEM_PASS              memPass           
+             , A.MEM_NAME              memName           
+             , A.MEM_BIR               memBir            
+             , A.MEM_ZIP               memZip            
+             , A.MEM_ADD1              memAdd1           
+             , A.MEM_ADD2              memAdd2           
+             , A.MEM_HP                memHp             
+             , A.MEM_MAIL              memMail           
+             , A.RECV_EMAIL_YN         recvEmailYn      
+             , A.MEM_JOB               memJob            
+             , B.CODE_NAME			   memJobName
+             , A.MEM_LIKE              memLike           
+             , A.MEM_MEMORIAL_TYPE     memMemorialType  
+             , A.MEM_MEMORIAL_DATE     memMemorialDate  
+             , NVL(A.MEM_MILEAGE, 0)   memMileage        
+             , A.MEM_COMMENT           memComment        
+             , A.MEM_DELETE            memDelete         
+         FROM TB_MEMBER A,TB_CODE B
+         WHERE 1 = 1
+         AND B.GROUP_CODE = 'A02'
+    	 AND A.MEM_JOB = B.CODE(+)
          <isNotEmpty property="memId">
-         AND MEM_ID = #memId#
+         AND MEM_ID LIKE '%' || #memId# || '%'
          </isNotEmpty>
          <isNotEmpty property="memName" prepend="AND">
-         MEM_NAME = #memName#
+         MEM_NAME LIKE '%' || #memName# || '%'
          </isNotEmpty>
 	</select>
 	

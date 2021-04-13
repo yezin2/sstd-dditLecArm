@@ -4,16 +4,9 @@
    <meta charset="UTF-8">
    <title>Insert title here</title>
    <style type="text/css">
-      nav{
-         background-color : #37475F;
-         width: 30%;
-         height: 500px;
-         float: left;
-      }
       #main{
          background-color:#EFF7F7;
-         width: 70%;
-         float: right;
+         width: 100%;
       }
       table, td{
          border-bottom: 1px solid #AAAAAA;
@@ -39,33 +32,11 @@
       }   
    </style>
    <script type="text/javascript" src="../../js/jquery-3.6.0.js"></script>
-   <script>
-      //
-      $(document).ready(function(){
-         $("#btnSearch").click(function search() {
-            $.ajax({
-               url : "/JqueryPj/MemberServlet"
-               ,type : "post"
-               ,data : ""
-               ,dataType:"json"
-               ,success : function (data) {
-                  console.log(data);
-                  alert("성공")
-               }
-               ,error : function(xhr) {
-                  console.log(xhr);
-                  alert("오류발생");
-               }
-            })
-         });
-      });
-   </script>
+   <script type="text/javascript" src="/JqueryPj/js/member/memberList.js"></script>
 </head>
 
 
 <body>
-   <nav>
-   </nav>
    <section id="main">
    
    <h2>검색+목록</h2>
@@ -75,27 +46,36 @@
 <!--    검색조건영역 -->
    <div id="search">
       ID:<input type="text" id="memberId" name="memID">
-      이름:<input type="text" id="memberId" name="memName">
-      <button type="button" id="btnSearch">조회</button>   
+      이름:<input type="text" id="memberName" name="memName">
+      <button type="button" id="btnSearch">검색</button>   
    </div>
 <!--    검색결과 영역-->
    <h3>회원목록</h3>   
-   <div id='result'>
-      <table style="border:2px solid;">
-         <tr>
-            <th>번호</th>
-            <th>ID</th>
-            <th>이름</th>
-            <th>전화번호</th>
-            <th>생년월일</th>
-         </tr>
-         <tr>
-            <td>1</td>
-            <td>iu</td>
-            <td>아이유</td>
-            <td></td>
-            <td></td>
-         </tr>
+   <div id='res'>
+      <table style="border:2px solid;" id="res-table">
+      	<caption>회원 목록</caption>
+      	<!-- <colgroup>
+      		<col style="width: 100px;">
+      		<col style="width: auto;">
+      	</colgroup> -->
+      	<thead>
+			<tr>
+				<th>번호</th>
+				<th>ID</th>
+				<th>이름</th>
+				<th>생년월일</th>
+				<th>휴대폰</th>
+				<th>주소</th>
+				<th>메일</th>
+				<th>직업</th>
+				<th>직업이름</th>
+				<th>마일리지</th>
+			</tr>
+		</thead>
+		<tbody id="res-table-tboby">
+			<!-- 검색 결과 출력 -->
+			<td colspan="9">검색버튼을 클릭하셈</td>
+		</tbody>
       </table>
    </div>
 <!--    영역    -->

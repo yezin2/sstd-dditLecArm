@@ -11,6 +11,13 @@ for(int i=0; i<list.size(); i++){
 	MemberVO mv = list.get(i);
 	String memId = mv.getMemId();
 	String memName = mv.getMemName();
+	String memBir = mv.getMemBir();
+	String memHp = mv.getMemHp();
+	String memAdd1 = mv.getMemAdd1();
+	String memMail = mv.getMemMail();
+	String memJob = mv.getMemJob();
+	String memJobName = mv.getMemJobName();
+	int memMileage = mv.getMemMileage();
 	
 	//json타입으로 만들어야 하는 부분 >> {name : "~", id : "~"}
 
@@ -18,7 +25,15 @@ for(int i=0; i<list.size(); i++){
 		%>,<%
 	}
 	%>
-	{"name" : "<%=memName %>", "id" : "<%=memId %>"}
+	{"memName" : "<%=memName %>", 
+	"memId" : "<%=memId %>",
+	"memBir" : "<%=memBir %>",
+	"memHp" : "<%=memHp %>",
+	"memAddr" : "<%=memAdd1 %>",
+	"memMail" : "<%=memMail %>",
+	"memJob" : "<%=memJob %>",
+	"memJobName" : "<%=memJobName %>",
+	"memMileage" : "<%=memMileage %>"}
 	<%
 }
 %>
