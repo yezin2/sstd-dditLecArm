@@ -53,4 +53,11 @@ public interface IMemberService {
 	 * @return
 	 */
 	public List<MemberVO> getSearchMember(MemberVO mv);
+
+	/**
+	 * 주어진 회원 ID에 해당하는 회원 정보를 조회하는 메서드
+	 * @param memId 검색할 회원 ID
+	 * @return 해당 회원ID
+	 */
+	public MemberVO getMember(String memId);
 }
