@@ -1,5 +1,18 @@
+<%@page import="kr.or.ddit.member.vo.AtchFileVO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.or.ddit.member.vo.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+
+	MemberVO memVO = (MemberVO) request.getAttribute("memVO");
+	
+	List<AtchFileVO> atchFileList = (List<AtchFileVO>) request.getAttribute("atchFileList");
+
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +21,7 @@
 </head>
 <body>
 	<form action="insert.do" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="memId" value="<%=memVO.getMemId() %>">
 		<table>
 			<tr>
 				<td>I D : </td>
@@ -26,8 +40,8 @@
 				<td><textarea rows="5" cols="10" name="memAddr"></textarea></td>
 			</tr>
 			<tr>
-				<td>첨부파일</td>
-				<td><input type="file" name="atchFile"></td><!-- miltipart -->
+				<td>첨부파일 : </td>
+				<td><input type="file" name="atchFile"></td>
 			</tr>
 		</table>
 		<input type="submit" value="회원등록">

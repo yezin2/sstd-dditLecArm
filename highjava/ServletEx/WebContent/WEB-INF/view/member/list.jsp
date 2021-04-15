@@ -21,6 +21,7 @@
 			<td>이름</td>
 			<td>전화번호</td>
 			<td>주소</td>
+			<td>파일</td>
 		</tr>
 		
 		<%
@@ -36,20 +37,21 @@
 					<%=memList.get(i).getMemName() %></a></td>
 			<td><%=memList.get(i).getMemTel() %></td>
 			<td><%=memList.get(i).getMemAddr() %></td>
+			<td><%=memList.get(i).getAtchFileId() %></td>
 		</tr>
 		<%
 				}
 			}else {
 		%>
 		<tr>
-			<td colspan="4">회원 정보가 없습니다.</td>
+			<td colspan="5">회원 정보가 없습니다.</td>
 		</tr>
 		<%
 			}
 		%>
 		<tr align="center">
 		<!-- 상대경로기 때문에  href="insert.do" 만 적어줘도 무방함-->
-			<td colspan="4"><a href="insert.do">[회원 등록]</a></td>
+			<td colspan="5"><a href="insert.do">[회원 등록]</a></td>
 		</tr>
 	</table>
 	

@@ -64,7 +64,7 @@
 	형식) <sqlMap resource="경로명/파일명.xml"/>
 	-->
 	<sqlMap resource="kr/or/ddit/sqlmap/member.xml"/>
-<!-- 	<sqlMap resource="ibatis/member/memberMain.xml"/> -->
+	<sqlMap resource="kr/or/ddit/sqlmap/atchFile.xml"/>
 </sqlMapConfig>
 
 

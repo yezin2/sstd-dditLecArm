@@ -1,14 +1,21 @@
 package kr.or.ddit.member.handler;
 
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.fileupload.FileItem;
+
 import kr.or.ddit.comm.handler.CommandHandler;
+import kr.or.ddit.comm.service.AtchFileServiceImpl;
+import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.member.service.IMemberService;
 import kr.or.ddit.member.service.MemberServiceImpl;
+import kr.or.ddit.member.vo.AtchFileVO;
 import kr.or.ddit.member.vo.MemberVO;
+import kr.or.ddit.util.FileUploadRequestWrapper;
 
 public class UpdateMemberHandler implements CommandHandler{
 
@@ -32,10 +39,38 @@ public class UpdateMemberHandler implements CommandHandler{
 			
 			MemberVO mv = service.getMember(memId);
 			
+			if(mv.getAtchFileId() > 0) { //첨부파일 존재하면...
+				//첨부파일 정보 조회
+				AtchFileVO fileVO = new AtchFileVO();
+				fileVO.setAtchFileId(mv.getAtchFileId());
+				
+				IAtchFileService atchFileService = AtchFileServiceImpl.getInstance();
+				List<AtchFileVO> atchFileList = atchFileService.getAtchFileList(fileVO);
+				
+				req.setAttribute("atchFileList", atchFileList);
+				
+			}			
+			
 			//2. 모델정보 등록
 			req.setAttribute("memVO", mv);
 			return VIEW_PAGE;
 		}else {	//POST 방식인 경우
+			
+			FileItem item = ((FileUploadRequestWrapper)req).getFileItem("atchFile");
+			
+			AtchFileVO atchFileVO = new AtchFileVO();
+			
+			//기존의 첨부파일 아이디 정보 가져오기
+			atchFileVO.setAtchFileId(req.getParameter("atchFile") == null ? 
+					-1 : Long.parseLong(req.getParameter("atchFile")));
+			
+			if(item != null && !item.getName().equals("")) {
+				IAtchFileService fileService = AtchFileServiceImpl.getInstance();
+				
+				atchFileVO = fileService.saveAtchFile(item); // 첨부파일 저장
+				
+			}
+			
 			//1. 요청 파라미터 정보 가져오기
 			String memId = req.getParameter("memId");
 			String memName = req.getParameter("memName");
@@ -51,6 +86,7 @@ public class UpdateMemberHandler implements CommandHandler{
 			mv.setMemName(memName);
 			mv.setMemAddr(memAddr);
 			mv.setMemTel(memTel);
+			mv.setAtchFileId(atchFileVO.getAtchFileId());
 			
 			int cnt = memberService.updateMember(mv);
 			

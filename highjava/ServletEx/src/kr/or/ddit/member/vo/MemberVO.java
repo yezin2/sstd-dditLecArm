@@ -13,6 +13,8 @@ public class MemberVO {
 	private String memTel;
 	private String memAddr;
 	
+	private long atchFileId= -1;
+	
 	public String getMemId() {
 		return memId;
 	}
@@ -36,6 +38,12 @@ public class MemberVO {
 	}
 	public void setMemAddr(String memAddr) {
 		this.memAddr = memAddr;
+	}
+	public long getAtchFileId() {
+		return atchFileId;
+	}
+	public void setAtchFileId(long atchFileId) {
+		this.atchFileId = atchFileId;
 	}
 	@Override
 	public String toString() {
