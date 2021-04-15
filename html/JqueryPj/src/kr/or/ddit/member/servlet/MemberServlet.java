@@ -52,8 +52,14 @@ public class MemberServlet extends HttpServlet {
 			} else if("CHKID".equals(flag)) {//ID체크
 				MemberVO memberVO = checkMemberId(req);
 				
-				req.setAttribute("memberVO", memberVO);
-				RequestDispatcher disp = req.getRequestDispatcher("/html/member/idCheckResult.jsp");
+				int resultCnt = 0;//중복이 없음
+				if(memberVO != null) {
+					resultCnt = 1; //중복이 있음
+				}
+				
+//				req.setAttribute("memberVO", memberVO);
+				req.setAttribute("resultCnt", resultCnt);
+				RequestDispatcher disp = req.getRequestDispatcher("/html/common/checkResult.jsp");
 				disp.forward(req, resp);
 			}
 			

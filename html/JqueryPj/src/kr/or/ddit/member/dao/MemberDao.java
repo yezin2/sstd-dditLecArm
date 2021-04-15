@@ -8,6 +8,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import kr.or.ddit.base.dao.BaseDao;
 import kr.or.ddit.member.vo.MemberVO;
 
+/**
+ * Dao : 쿼리 호출
+ */
 public class MemberDao extends BaseDao {
 	private SqlMapClient smc;
 	
