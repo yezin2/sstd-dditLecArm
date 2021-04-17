@@ -16,7 +16,7 @@
 		String gugun = vo.getGugun();
 		String dong = vo.getDong();
 		String bunji = vo.getBunji();
-		String zipcode = vo.getZipcode();
+		String zipCode = vo.getZipcode();
 		
 		%>
 		{
@@ -24,7 +24,7 @@
 			,"gugun" : "<%=gugun %>"
 			,"dong" : "<%=dong %>"
 			,"bunji" : "<%=bunji %>"
-			,"zipcode" : "<%=zipcode %>"
+			,"zipCode" : "<%=zipCode %>"
 		}
 		<%
 	}//for

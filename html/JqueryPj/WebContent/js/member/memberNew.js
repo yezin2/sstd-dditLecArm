@@ -4,7 +4,90 @@ $(document).ready(function() {
 	initMemorialSelect();//기념일코드 초기화
 	initHobbySelect();//취미코드 초기화
 	initSidoSelect();//시도 초기화
+	
+	//$("#tbZipResult tbody").dblclick(function() {
+//	});
+	$("#tbZipResult").on("dblclick", "tbody tr", function() {
+		console.log($(this));
+		console.log($(this).children);
+		
+		var zipcode = $(this).children("td:eq(0)").text();
+		var addr = $(this).children("td:eq(1)").text();
+		
+		console.log(zipcode);
+		console.log(addr);
+		
+		//메인화면(부모창)의 우편번호, 주소 input에 데이터 세팅
+		$("#memZip").val(zipcode);
+		$("#memAdd1").val(addr);
+		
+		//주소창 닫기
+		$("#zipModal").modal("hide");
+	});
 });
+
+//openZip
+function openZip() {
+	//시 셀렉박스 조회하고 초기화
+	initSidoSelect();//시도 초기화
+	//테이블 초기화
+	$("#tbZipResult tbody").empty();
+	//주소창(modal) 열기 - 부트스트랩에 모달
+	$("#zipModal").modal();
+}
+
+//회원 정보 저장하기
+function save() {
+	//회원 정보 유효성 체크
+//	var result = validate();
+//	if(!result){
+//		return;
+//	}
+	
+	//사용자 컨펌
+	if(!confirm("저장하시겠습니까?")){
+		return;
+	}
+	
+	//db에 저장하는 ajax 호출
+	$("#formFlag").val("C");
+	$.ajax({
+		url : "/JqueryPj/MemberServlet",
+		type : "post",
+		data : $("#fm").serialize(),
+		dataType : "json",
+		success : function(data) {
+			alert("저장되었습니다.");
+			
+			//페이지 이동
+//			changePage();
+		},
+		error : function(xhr) {
+			alert("실패. 관리자 문의 바람");
+			console.log(xhr);
+		}
+	});
+}
+
+function changePage() {
+	//방법1
+	window.location.href = "/JqueryPj/html/member/memberList2.html";
+	
+	//방법2
+	var fm = document.getElementById("fm");
+	fm.action = "/JqueryPj/html/member/memberList2.html";
+	fm.method = "post";
+	fm.submit();
+}
+
+function validate() {
+	//...
+//	return false;
+	
+	//체크가 끝나면
+	return true;
+}
+
 //[ID중복검사] 버튼에 클릭 이벤트
 function chkId() {
 	var memId = $("#memId").val();
@@ -146,12 +229,13 @@ function initHobbySelect() {
 function makeHobbySelect(data) {
 	var strHtml = "";
 	for(var i=0; i<data.length; i++){
-		strHtml += '<label class="checkbox-inline" id="memHob"><input type="checkbox" value="' + data[i].value + '">' + data[i].name + '</label>';
+		strHtml += '<label class="checkbox-inline" id="memHob">'
+				+'<input type="checkbox" value="' + data[i].value + '">' + data[i].name + '</label>';
 	}
 //	<label class="checkbox-inline" id="memHob">
 //	<input type="checkbox" value="02">수영
 //	</label>
-	$("#memHob").html(strHtml);
+	$("#divMemHob").html(strHtml);
 }
 
 /*$(document).ready(function() {
@@ -189,6 +273,7 @@ function makeSidoSelect(data) {
 //	<input type="checkbox" value="02">수영
 //	</label>
 	$("#sido").html(strHtml);
+	setGugun();
 }
 
 //방법2)setGu();
@@ -210,11 +295,10 @@ function setGugun() {
 		},
 		error : function(xhr) {
 			console.log(xhr);
-			alert("오류발생 - setGu"); 
+			alert("오류발생 - setGugun"); 
 		}
 	});
 }
-
 //gugun생성
 function makeGugunSelect(data) {
 	var strHtml = '<option>선택하세요</option>';
@@ -227,6 +311,8 @@ function makeGugunSelect(data) {
 //	</label>
 	$("#gugun").html(strHtml);
 	$("#gugun").prop("disabled", false);
+	
+	setDong();
 }
 
 //dong세팅
@@ -245,7 +331,7 @@ function setDong() {
 		},
 		error : function(xhr) {
 			console.log(xhr);
-			alert("오류발생 - setGu"); 
+			alert("오류발생 - setDong"); 
 		}
 	});
 }
@@ -262,4 +348,48 @@ function makeDongSelect(data) {
 //	</label>
 	$("#dong").html(strHtml);
 	$("#dong").prop("disabled", false);
+}
+
+//zip세팅
+function searchZipCode() {
+	var param = {'sido' : $("#sido").val(), 
+				'gugun' : $("#gugun").val(), 
+				'dong' : $("#dong").val(), 
+				'flag' : 'ZIP'};
+	
+	$.ajax({
+		url : "/JqueryPj/ZipServlet",
+		type : "post",
+		data : param,//동 조회
+		dataType : "json",
+		success : function(data) {
+			console.log("ZIP");
+			console.log(data);
+			makeZipTable(data);
+		},
+		error : function(xhr) {
+			console.log(xhr);
+			alert("오류발생 - searchZipCode"); 
+		}
+	});
+}
+
+//dong생성
+function makeZipTable(data) {
+	console.log("makeZipTable");
+	var strHtml = '';
+	for(var i=0; i<data.length; i++){
+		strHtml += '<tr><td>' + data[i].zipCode + '</td>' 
+				+ '<td>' + data[i].sido + ' '
+				+ data[i].gugun + ' '
+				+ data[i].dong + ' '
+				+ data[i].bunji + '</td></tr>'
+				;
+	}
+	console.log(strHtml);
+//	<label class="checkbox-inline" id="memHob">
+//	<input type="checkbox" value="02">수영
+//	</label>
+	$("#tbZipResult tbody").html(strHtml);
+	$("#divZipResult").show();
 }

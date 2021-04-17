@@ -45,7 +45,7 @@ public class ZipServlet extends HttpServlet{
 				zipVO.setSido(req.getParameter("sido"));
 				zipVO.setGugun(req.getParameter("gugun"));
 				list = zipService.retrieveDongList(zipVO);
-			} else {
+			} else if("ZIP".equals(flag)){
 				ZipVO zipVO = new ZipVO();
 				zipVO.setSido(req.getParameter("sido"));
 				zipVO.setGugun(req.getParameter("gugun"));

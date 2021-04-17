@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.omg.CORBA.PRIVATE_MEMBER;
+import org.apache.commons.beanutils.BeanUtils;
 
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.vo.MemberVO;
@@ -43,6 +43,11 @@ public class MemberServlet extends HttpServlet {
 				
 			} else if("C".equals(flag)) {//등록
 				createMember(req);
+				
+				req.setAttribute("resultCnt", 1);
+				RequestDispatcher disp = req.getRequestDispatcher("/html/common/checkResult.jsp");
+				disp.forward(req, resp);
+				
 			} else if("R".equals(flag)) {//단건조회
 				
 			} else if("U".equals(flag)) {//수정
@@ -75,15 +80,18 @@ public class MemberServlet extends HttpServlet {
 		return memberVO;
 	}
 
-	private void createMember(HttpServletRequest req) throws SQLException{
-		String memId = req.getParameter("memId");
-		String memName = req.getParameter("memName");
+	private void createMember(HttpServletRequest req) throws Exception{
+		//기존 방법
+//		String memId = req.getParameter("memId");
+//		String memName = req.getParameter("memName");
 		//그 외 정보들...
+//		MemberVO memberVO = new MemberVO();
+//		memberVO.setMemId(memId);
+//		memberVO.setMemName(memName);
+//		그외정보들 VO에 세팅
 		
 		MemberVO memberVO = new MemberVO();
-		memberVO.setMemId(memId);
-		memberVO.setMemName(memName);
-		//그외 정보들 VO에 세팅...
+		BeanUtils.populate(memberVO, req.getParameterMap());
 		
 		MemberService service = new MemberService();
 		service.createMember(memberVO);

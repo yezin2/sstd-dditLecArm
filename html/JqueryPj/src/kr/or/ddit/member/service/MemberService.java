@@ -27,6 +27,11 @@ public class MemberService {
 	}
 
 	public void createMember(MemberVO memberVO) throws SQLException {
+		
+		String memHp = memberVO.getMemHp().replaceAll("-","");
+		memberVO.setMemHp(memHp);
+		String memZip = memberVO.getMemZip().replaceAll("-", "");
+		memberVO.setMemZip(memZip);
 		/* 1. 등록 전 유효성 체크(중복 ID/ ID, PW 유효성 검사)*/
 //		MemberVO resultVO = dao.retrieveMember(memberVO.getMemId());
 //		if(resultVO != null)

@@ -41,7 +41,7 @@
 				, DONG      dong
 				, RI       	ri
 				, BLDG      bldg
-				, BUNJI     bunji
+				, nvl(BUNJI,' ')     bunji
 				, SEQ       seq
 		FROM TB_ZIP A
 		WHERE SIDO = #sido#

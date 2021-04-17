@@ -63,7 +63,7 @@
 
 	<div class="container">
 		<h2>Sign Up</h2>
-		<form class="form-horizontal" action="/action_page.php">
+		<form class="form-horizontal" action="/action_page.php" id="fm">
 		<!-- id -->
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="memId">ID:</label>
@@ -94,7 +94,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2 required" for="memPass">비밀번호 확인</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control form-control1" id="memPass1" placeholder="비밀번호를 입력하세요" name="memPass" required>
+					<input type="password" class="form-control form-control1" id="memPass1" placeholder="앞서 입력한 비밀번호를 동일하게 입력하세요" name="memPass1" required>
 					<span id="spMemPass1" style="display: none;">비밀번호가 일치하지 않습니다.</span>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="BD">생년월일:</label>
 				<div class="col-sm-10">
-				  	<input type="date" class="form-control" id="BD" placeholder="Enter BirthDay">
+				  	<input type="date" class="form-control" id="BD" placeholder="Enter BirthDay" name="memBir">
 				</div>
 			</div>
 		<!-- HP -->
@@ -123,10 +123,11 @@
 			</div>
 		<!-- ADDR -->
 			<div class="form-group">
-				<label class="control-label col-sm-2 required" for="memId">주소</label>
+				<label class="control-label col-sm-2 required" for="memZip">주소</label>
 				<div class="col-sm-10 form-inline">
 					<input type="text" class="form-control form-inline-zip1" id="memZip" name="memZip" readonly="readonly" required>
-					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="btnAddr" data-target="#zipModal">검색</button>
+<!-- 					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="btnAddr" data-target="#zipModal">검색</button> -->
+					<button type="button" class="btn btn-info btn-sm" onclick="openZip()">검색</button>
 					<input type="text" class="form-control form-inline-zip2" id="memAdd1" name="memAdd1" readonly="readonly" required>
 					<br>
 					<div class="form-group-inner-down">
@@ -146,8 +147,8 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="memMri">기념일</label>
 				<div class="col-sm-10 form-inline">
-					종류 : <select class="form-control" id="memMri" name="memMri"></select>
-					날짜 : <input type="text" class="form-control singleDate" id="memMriday" name="memMriday">
+					종류 : <select class="form-control" id="memMri" name="memMemorialType"></select>
+					날짜 : <input type="date" class="form-control singleDate" id="memMriday" name="memMemorialDate">
 				</div>
 			</div>
 		<!-- RECV MAIL -->
@@ -161,14 +162,15 @@
 		<!-- HOBBY -->
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="memHob">취미:</label>
-				<div class="col-sm-10" id="divMemHob">
-					<label class="checkbox-inline" id="memHob">
+				<div class="col-sm-10" id="divMemHob" name="memLike">
+<!-- 					<label class="checkbox-inline" id="memHob"> -->
 						
-					</label>
+<!-- 					</label> -->
 				</div>
 			</div>
 		<!-- ? -->
-			<input type="hidden" name="action" id="actionFm">
+<!-- 			<input type="hidden" name="action" id="actionFm"> -->
+			<input type="hidden" name="flag" id="formFlag">
 		</form>
 		<!-- BTN -->
 		<div class="form-button text-center">
