@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- CSS -->
+	<!-- JS -->
+	<script type="text/javascript" src="/HtmlAss/js/jquery-3.6.0.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/HtmlAss/js/member/memberNew.js"></script>
+	<script type="text/javascript" src="/HtmlAss/js/common/myUtil.js"></script>
+	
+<!-- 	<script type="text/javascript" src="/JqueryPro/js/common/dditUtils.js?v=1"></script> -->
+<!-- 	<script type="text/javascript" src="/JqueryPro/js/member/memberNew.js?v=1"></script> -->
+
+<!-- 	<link rel="stylesheet" href="/JqueryPro/js/lib/jquery-ui.css"> -->
+<!-- 	<script src="/JqueryPro/js/lib/jquery-ui.js"></script> -->
+<!-- 	<script src="/JqueryPro/js/lib/datepicker-ko.js"></script> -->
+	
+	
+	
+	
+	<style type="text/css">
+	body {background-color: #000000;text-align: center;}
+	body h2{color: #ffffff;}
+	.container .form-horizontal .form-group:first-child {
+/* 		border-top: 1px solid; */
+		border-top: 10px solid #8e8e8e;
+		border-left: 10px solid #8e8e8e;
+		border-right: 10px solid #8e8e8e;
+	}
+	.container .form-horizontal .form-group {
+/* 		border-bottom: 1px solid; */
+		border-bottom: 1px solid #8e8e8e;
+		border-left: 10px solid #8e8e8e;
+		border-right: 10px solid #8e8e8e;
+		padding: 5px 0px;
+		margin: 0 -15px;
+		background-color: #ffffff;
+	    
+	    display: flex;
+ 	    align-items: center;
+	}
+	.container .form-horizontal .last-form {
+/* 		border-bottom: 1px solid; */
+		border-bottom: 10px solid #8e8e8e;
+	}
+	.container .form-horizontal .form-group .control-label {}
+	.form-button {padding: 10px 0px;}
+	.form-inline .form-inline-zip1 {width: 90px;}
+	.form-inline .form-inline-zip2 {width: calc(100% - 90px - 54px);}
+	.form-group-inner-down{width: 100%; margin-top: 5px;}
+	.form-group-inner-down .form-control{width: 100%}
+	.form-control1{width: 50%;}
+	.form-control {padding-left: 16px;}
+	.form-control:disabled, .form-control[readonly] {background: #f2f5fa;}
+
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<h2>Sign Up</h2>
+		<form class="form-horizontal" action="/action_page.php" id="fm">
+		<!-- id -->
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="memId">ID</label>
+				<div class="col-sm-10 form-inline">
+					  <input type="text" class="form-control" id="memId" placeholder="Enter Id" name="memId">
+					  <button type="button" class="btn btn-default btn-sm" id="btnMemId" onclick="chkId()">중복검사</button>
+					  <span id="spMemId" style="display: none;">영어 소문자와 숫자 4~12글자</span>
+					  <input type="hidden" id="idChk" value="idChkF">
+				</div>
+			</div>
+		<!-- 이름 -->
+			<div class="form-group">
+				<label class="control-label col-sm-2 required" for="memName">이름</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control form-control1" id="memName" placeholder="이름을 입력하세요" name="memName" required>
+					<span id="spMemName" style="display: none;">한글만 2~5자리</span>
+					<input type="hidden" id="nameChk" value="nameChkF">
+				</div>
+			</div>
+		<!-- PW -->
+			<div class="form-group">
+				<label class="control-label col-sm-2 required" for="memPass">비밀번호</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control form-control1" id="memPass" placeholder="비밀번호를 입력하세요" name="memPass" required>
+					<span id="spMemPass" style="display: none;">
+					영문 소문자, 영문 대문자, 
+					숫자, 특수문자가 각각 1개 이상씩 포함된 8~12 글자</span>
+					<input type="hidden" id="passChk" value="passChkF">
+				</div>
+			</div>
+		<!-- PWCH -->
+			<div class="form-group">
+				<label class="control-label col-sm-2 required" for="memPass1">비밀번호 확인</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control form-control1" id="memPass1" placeholder="앞서 입력한 비밀번호를 동일하게 입력하세요" name="memPass1" required>
+					<span id="spMemPass1" style="display: none;">비밀번호가 일치하지 않습니다.</span>
+				</div>
+			</div>
+		<!-- EMAIL -->
+			<div class="form-group row">
+				<label class="control-label col-sm-2 required" for="memMail">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control form-control1" id="memMail" name="memMail" placeholder="email을 입력하세요" required>
+					<span id="spMemMail" style="display: none;">이메일 형식이 바르지 않습니다.</span>
+					<input type="hidden" id="mailChk" value="mailChkF">
+				</div>
+			</div>
+		<!-- BD -->
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="memBD">생년월일:</label>
+				<div class="col-sm-10">
+				  	<input type="date" class="form-control" id="memBD" placeholder="Enter BirthDay" name="memBir">
+					<span id="spBD" style="display: none;">10살 이하는 가입이 불가능 합니다.</span>
+					<input type="hidden" id="bdChk" value="bdChkF">
+				</div>
+			</div>
+		<!-- HP -->
+			<div class="form-group row">
+				<label class="control-label col-sm-2 required" for="memHp">핸드폰번호</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control form-control1" id="memHp" name="memHp" placeholder="핸드폰번호를 입력하세요" required>
+					<span id="spMemHp" style="display: none;">*핸드폰번호 형식이 바르지 않습니다.<br>010-0000-0000</span>
+					<input type="hidden" id="hpChk" value="hpChkF">
+				</div>
+			</div>
+		<!-- ADDR -->
+			<div class="form-group last-form">
+				<label class="control-label col-sm-2 required" for="memZip">주소</label>
+				<div class="col-sm-10 form-inline">
+					<input type="text" class="form-control form-inline-zip1" id="memZip" name="memZip" readonly="readonly" required>
+					<button type="button" class="btn btn-info btn-sm" data-toggle="modal" id="btnAddr" data-target="#zipModal">검색</button>
+<!-- 					<button type="button" class="btn btn-info btn-sm" onclick="openZip()">검색</button> -->
+					<input type="text" class="form-control form-inline-zip2" id="memAdd1" name="memAdd1" readonly="readonly" required>
+					<br>
+					<div class="form-group-inner-down">
+						<input type="text" class="form-control" id="memAdd2" name="memAdd2" placeholder="상세주소를 입력하세요" required>
+					</div>
+				</div>
+			</div>
+		<!-- ? -->
+<!-- 			<input type="hidden" name="action" id="actionFm"> -->
+			<input type="hidden" name="flag" id="formFlag">
+		</form>
+		<!-- BTN -->
+		<div class="form-button text-center">
+			<button type="button" class="btn btn-primary" onclick="save()">저장</button>
+			<button type="button" class="btn btn-default" onclick="goList()">취소</button>
+		</div>
+	</div>
+	
+	<!-- 우편번호 검색 Modal -->
+	<div class="modal fade" id="zipModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">우편번호 검색</h4>
+        </div>
+        <div class="modal-body">
+					동 이름: <input type="text" id="dong" class="form-control">
+					<button type="button" onclick="searchZipCode()" id="btnZip">검색</button>
+					<hr>
+					<div id="divZipResult" style="display: none;">
+						<table class="table table-striped" id="tbZipResult">
+						  <thead>
+						    <tr>
+						      <th>우편번호</th>
+						      <th>주소</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+						</table>
+					</div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+	
+	<form id="tmpFm">
+		<input type="hidden" name="action" id="actionTmlFm">
+		<input type="hidden" name="memId" id="selectedMemId">
+		<input type="hidden" name="targetUrl" id="targetUrl">
+	</form>
+	<!-- 본문영역 끝 -->
+</body>
+</html>

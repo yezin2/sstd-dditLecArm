@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="member">
+	<insert id="createMember" parameterClass="kr.or.ddit.member.vo.MemberVO">
+		INSERT INTO TB_MEMBER (
+			MEM_ID
+			, MEM_PASS
+			, MEM_NAME
+			, MEM_BIR
+			, MEM_ZIP
+			, MEM_ADD1
+			, MEM_ADD2
+			, MEM_HP
+			, MEM_MAIL
+		) VALUES (
+			  #memId#
+			, #memPass#
+			, #memName#
+			, #memBir#
+			, #memZip#
+			, #memAdd1#
+			, #memAdd2#
+			, #memHp#
+			, #memMail#
+		)
+	</insert>
+	<update id="updateMember"></update>
+	
+	<select id="retrieveMember" parameterClass="String" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT MEM_ID                memId             
+             , MEM_PASS              memPass           
+             , MEM_NAME              memName           
+             , TO_CHAR(MEM_BIR, 'yyy-mm-dd')    memBir            
+             , MEM_ZIP               memZip            
+             , MEM_ADD1              memAdd1           
+             , MEM_ADD2              memAdd2           
+             , MEM_HP                memHp             
+             , MEM_MAIL              memMail
+		FROM TB_MEMBER
+		WHERE MEM_ID = #memId#
+	</select>
+	
+	
+	<select id="retrieveMemberList" parameterClass="kr.or.ddit.member.vo.MemberVO" resultClass="kr.or.ddit.member.vo.MemberVO">
+		SELECT MEM_ID                memId             
+             , MEM_PASS              memPass           
+             , MEM_NAME              memName           
+             , MEM_BIR               memBir            
+             , MEM_ZIP               memZip            
+             , MEM_ADD1              memAdd1           
+             , MEM_ADD2              memAdd2           
+             , MEM_HP                memHp             
+             , MEM_MAIL              memMail   
+         FROM TB_MEMBER
+         WHERE 1 = 1
+         <isNotEmpty property="memId">
+         AND MEM_ID LIKE '%' || #memId# || '%'
+         </isNotEmpty>
+         <isNotEmpty property="memName" prepend="AND">
+         AMEM_NAME LIKE '%' || #memName# || '%'
+         </isNotEmpty>
+	</select>
+	
+</sqlMap>
