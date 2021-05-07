@@ -1,0 +1,10 @@
+package day03;
+
+public class Ooptest {
+	public static void main(String[] args) {
+		Animal ani = new Animal();
+		System.out.println(ani.fullness);
+		ani.mantang();
+		System.out.println(ani.fullness);
+	}
+}

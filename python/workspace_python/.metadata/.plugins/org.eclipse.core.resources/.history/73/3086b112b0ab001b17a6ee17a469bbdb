@@ -1,0 +1,4 @@
+arra = range(10)
+
+for i in arra:
+    print("3 * " + str(i) + " = " + str(3 * i))

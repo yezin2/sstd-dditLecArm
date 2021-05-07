@@ -1,0 +1,15 @@
+import random
+pcnum = random.randint(1, 2)
+pc = ""
+
+if pcnum == 1:
+    pc = "홀"
+elif pcnum == 2:
+    pc = "짝"
+    
+mine = input("홀/짝을 선택하세요")
+
+if mine == pc:
+    "이김!"
+else:
+    "짐ㅠㅠ"

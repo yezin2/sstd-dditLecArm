@@ -1,0 +1,7 @@
+from Cython.Compiler.Naming import self_cname
+class Animal:
+    def __init__(self):
+        self.fullness = 0
+
+ani = Animal()
+print(ani.fullness)

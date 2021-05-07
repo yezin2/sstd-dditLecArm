@@ -1,0 +1,14 @@
+from Cython.Compiler.Naming import self_cname
+class Animal:
+    def __init__(self):
+        self.fullness = 0
+    def eat (self):
+        self.fullness++
+    def mantang (self):
+        self.fullness += 10
+ani = Animal()
+print(ani.fullness)
+ani.eat()
+print(ani.fullness)
+ani.mantang()
+print(ani.fullness)

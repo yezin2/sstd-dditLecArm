@@ -1,0 +1,2 @@
+import random
+mine = random.randint(1, 10)

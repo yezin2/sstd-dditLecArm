@@ -1,0 +1,6 @@
+arra = range(10)
+arrb = range(10)
+
+for i in arra:
+    for j in arrb:
+        print(str(j) + " * " + str(i) + " = " + str(j * i))
