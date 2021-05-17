@@ -1,0 +1,239 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdminLTE 3 | Starter</title>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/bootstrap/plugins/fontawesome-free/css/all.min.css">
+<!-- Theme style -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/bootstrap/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+
+		<!-- Navbar -->
+		<nav
+			class="main-header navbar navbar-expand navbar-white navbar-light">
+			<!-- SEARCH FORM -->
+			<form class="form-inline ml-3">
+				<div class="input-group input-group-sm">
+					<input class="form-control form-control-navbar" type="search"
+						placeholder="Search" aria-label="Search">
+					<div class="input-group-append">
+						<button class="btn btn-navbar" type="submit">
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+
+			<!-- Right navbar links -->
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link"
+					data-widget="fullscreen" href="#" role="button"> <i
+						class="fas fa-expand-arrows-alt"></i>
+				</a></li>
+				<li class="nav-item"><a class="nav-link"
+					data-widget="control-sidebar" data-slide="true" href="#"
+					role="button"> <i class="fas fa-th-large"></i>
+				</a></li>
+			</ul>
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+			<!-- Brand Logo -->
+			<a href="index3.html" class="brand-link"> <img
+				src="<%=request.getContextPath()%>/resources/bootstrap/dist/img/AdminLTELogo.png"
+				alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+				style="opacity: .8"> <span
+				class="brand-text font-weight-light">AdminLTE 3</span>
+			</a>
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<li class="nav-item">
+							<a href="<%=request.getContextPath()%>/select" class="nav-link active">
+								<i class="nav-icon fas fa-th"></i>
+								<p>
+									Member Select
+								</p>
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+		</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1 class="m-0">Member Insert</h1>
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content-header -->
+
+			<!-- Main content -->
+			<div class="content col-sm-12">
+				<div class="container-fluid">
+					<div class="card card-success">
+						<div class="card-header">
+							<h3 class="card-title">Insert Member</h3>
+						</div>
+						<!-- /.card-header -->
+						<!-- form start -->
+						<form  method="post" action="<%=request.getContextPath()%>/update">
+							<div class="card-body">
+								<div class="form-group">
+									<label for="InputID">ID</label> <input
+										type="text" class="form-control" id="InputID"
+										placeholder="Enter ID" name="id" value="${mv.id }" readonly="readonly">
+								</div>
+								<div class="form-group">
+									<label for="InputPWD">Password</label> <input
+										type="password" class="form-control" id="InputPWD"
+										placeholder="Enter password" name="pwd" value="${mv.pwd }">
+								</div>
+								<div class="form-group">
+									<label for="InputName">Name</label> <input
+										type="text" class="form-control" id="InputName"
+										placeholder="Enter name" name="name" value="${mv.name }">
+								</div>
+								<div class="form-group">
+									<label for="InputEmail">Email</label> <input
+										type="email" class="form-control" id="InputEmail"
+										placeholder="Enter email" name="email" value="${mv.email }">
+								</div>
+								<div class="form-group">
+									<label for="InputPhone">Phone Number</label> <input
+										type="tel" class="form-control" id="InputPhone"
+										placeholder="Enter phone number" name="phone" value="${mv.phone }">
+								</div>
+							</div>
+							<!-- /.card-body -->
+	
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary">Submit</button>
+<!-- 								<div class="swal2-container swal2-top-end swal2-backdrop-hide" -->
+<!-- 									style="overflow-y: auto;"> -->
+<!-- 									<div aria-labelledby="swal2-title" -->
+<!-- 										aria-describedby="swal2-content" -->
+<!-- 										class="swal2-popup swal2-toast swal2-icon-success swal2-hide" -->
+<!-- 										tabindex="-1" role="alert" aria-live="polite" -->
+<!-- 										style="display: flex;"> -->
+<!-- 										<div class="swal2-header"> -->
+<!-- 											<ul class="swal2-progress-steps" style="display: none;"></ul> -->
+<!-- 											<div class="swal2-icon swal2-error" style="display: none;"></div> -->
+<!-- 											<div class="swal2-icon swal2-question" style="display: none;"></div> -->
+<!-- 											<div class="swal2-icon swal2-warning" style="display: none;"></div> -->
+<!-- 											<div class="swal2-icon swal2-info" style="display: none;"></div> -->
+<!-- 											<div class="swal2-icon swal2-success swal2-icon-show" style="display: flex;"> -->
+<!-- 												<div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div> -->
+<!-- 												<span class="swal2-success-line-tip"></span> -->
+<!-- 												<span class="swal2-success-line-long"></span> -->
+<!-- 												<div class="swal2-success-ring"></div> -->
+<!-- 												<div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div> -->
+<!-- 												<div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div> -->
+<!-- 											</div> -->
+<!-- 											<img class="swal2-image" style="display: none;"> -->
+<!-- 											<h2 class="swal2-title" id="swal2-title" style="display: flex;">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</h2> -->
+<!-- 											<button type="button" class="swal2-close" -->
+<!-- 												aria-label="Close this dialog" style="display: none;">×</button> -->
+<!-- 										</div> -->
+<!-- 										<div class="swal2-content"> -->
+<!-- 											<div id="swal2-content" class="swal2-html-container" -->
+<!-- 												style="display: none;"></div> -->
+<!-- 											<input class="swal2-input" style="display: none;"><input -->
+<!-- 												type="file" class="swal2-file" style="display: none;"> -->
+<!-- 											<div class="swal2-range" style="display: none;"> -->
+<!-- 												<input type="range"> -->
+<!-- 												<output></output> -->
+<!-- 											</div> -->
+<!-- 											<select class="swal2-select" style="display: none;"></select> -->
+<!-- 											<div class="swal2-radio" style="display: none;"></div> -->
+<!-- 											<label for="swal2-checkbox" class="swal2-checkbox" -->
+<!-- 												style="display: none;"><input type="checkbox"><span -->
+<!-- 												class="swal2-label"></span></label> -->
+<!-- 											<textarea class="swal2-textarea" style="display: none;"></textarea> -->
+<!-- 											<div class="swal2-validation-message" -->
+<!-- 												id="swal2-validation-message"></div> -->
+<!-- 										</div> -->
+<!-- 										<div class="swal2-actions" style="display: none;"> -->
+<!-- 											<div class="swal2-loader"></div> -->
+<!-- 											<button type="button" class="swal2-confirm swal2-styled" -->
+<!-- 												aria-label="" style="display: none;">OK</button> -->
+<!-- 											<button type="button" class="swal2-deny swal2-styled" -->
+<!-- 												aria-label="" style="display: none;">No</button> -->
+<!-- 											<button type="button" class="swal2-cancel swal2-styled" -->
+<!-- 												aria-label="" style="display: none;">Cancel</button> -->
+<!-- 										</div> -->
+<!-- 										<div class="swal2-footer" style="display: none;"></div> -->
+<!-- 										<div class="swal2-timer-progress-bar-container"> -->
+<!-- 											<div class="swal2-timer-progress-bar" style="display: none;"> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- /.container-fluid -->
+			</div>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- To the right -->
+			<div class="float-right d-none d-sm-inline">Anything you want</div>
+			<!-- Default to the left -->
+			<strong>Copyright &copy; 2021-01 403 [yezin]</strong>
+		</footer>
+	</div>
+	<!-- ./wrapper -->
+
+	<!-- REQUIRED SCRIPTS -->
+	<!-- Script -->
+	<script type="text/javascript">${script}</script>
+	<!-- jQuery -->
+	<script
+		src="<%=request.getContextPath()%>/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script
+		src="<%=request.getContextPath()%>/resources/bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script
+		src="<%=request.getContextPath()%>/resources/bootstrap/dist/js/adminlte.min.js"></script>
+</body>
+</html>

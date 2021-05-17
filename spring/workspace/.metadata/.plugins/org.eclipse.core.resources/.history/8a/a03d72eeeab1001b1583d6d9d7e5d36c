@@ -1,0 +1,60 @@
+package com.servlet.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.servlet.dto.MemberVO;
+import com.ibatis.sqlmap.client.SqlMapClient;
+import com.servlet.dao.MemDAO;
+
+public class MemberServiceImpl implements MemberService {
+
+	private MemDAO memberDAO; // - MemberDAOImpl.getInstance();
+	private SqlMapClient smc;
+	
+	@Override
+	public List<MemberVO> selectMember() throws SQLException{
+		List<MemberVO> memList = null;
+		try {
+			memList = memberDAO.selectMember(smc);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return memList;
+	}
+	@Override
+	public int insertMember(MemberVO mv) throws SQLException{
+		int insertResult = 0;
+		try {
+			insertResult = memberDAO.insertMember(smc, mv);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return insertResult;
+	}
+	@Override
+	public int updateMember(MemberVO mv) throws SQLException{
+		int updateResult = 0;
+		try {
+			updateResult = memberDAO.updateMember(smc, mv);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return updateResult;
+	}
+	@Override
+	public int deleteMember(String memId) throws SQLException{
+		int deleteResult = 0;
+		try {
+			deleteResult = memberDAO.deleteMember(smc, memId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return deleteResult;
+	}
+
+}

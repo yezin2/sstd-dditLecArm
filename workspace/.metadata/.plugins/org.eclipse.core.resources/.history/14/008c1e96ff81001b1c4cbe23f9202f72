@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>position 연습 - 예제4</h1>
+		<img src="../../images/타디스2.png">
+		<p>이 글자는 이미지 위에 있어용</p>
+	
+	</body>
+</html>

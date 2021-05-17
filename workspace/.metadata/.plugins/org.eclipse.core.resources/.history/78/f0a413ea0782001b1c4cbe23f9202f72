@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+<body>
+	<!-- 사자 -->
+	<div>
+		<h1>사자는 말입니다.</h1>
+		<img alt="사자" src="../../images/lion.jpg">
+	</div>
+	<!-- 호랑이 -->
+	<div>
+		<h1>호랑이는 말입니다.</h1>
+		<img alt="호랑이" src="../../images/tiger.jpg">
+	</div>
+</body>
+</html>

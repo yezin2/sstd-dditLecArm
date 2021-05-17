@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<!-- 머리글 -->
+		<header>
+			<h1>My Blog Page</h1>
+		</header>
+		<!-- 네비 -->
+		<nav>
+			<h2>Links</h2>
+			<ul>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+			</ul>
+			<img alt="타디스" src="../../images/타디스2.png">
+			<p>TARDIS</p>
+		</nav>
+		<!-- 본문 -->
+		<section>
+			<!-- 시맨틱 태그 -->
+			<div>
+			<article>
+				<h3>Semantic Tags</h3>
+				<p>시맨틱 요소들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.</p>
+			</article>
+			</div>
+			<!-- div 내용 -->
+			<article>
+				<h3>div와 span</h3>
+				<p>div는 divide의 약자로서 대한민국 만세 만세 만만세</p>
+				
+			</article>
+		</section>
+		<!-- 바닥글 -->
+		<footer>
+			<p>Copyright (c) 2021 Tardis</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			p, div {
+				width: 200px;
+				height: 100px;
+			}
+			#ex1{
+				background-color: aqua;
+			}
+			#ex2{
+				background-color: yellow;
+				position: absolute;
+				top: 50px;
+			}
+			#ex3{
+				background-color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>position 연습</h1>
+		<p id="ex1">블럭1</p>
+		<div id="ex2">블럭2(position)</div>
+		<p id="ex3">블럭3</p>
+	</body>
+</html>

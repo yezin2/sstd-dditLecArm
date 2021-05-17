@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			#CY {
+				width: 300px;
+				z-index: -1;
+				position: relative;
+				top: -280px;
+
+			}
+			div {
+			}
+		
+		
+		</style>
+	</head>
+<body>
+	<h1>이미지 텍스트</h1>
+	<h1>이미지 텍스트</h1>
+	<h1>이미지 텍스트</h1>
+	<h1>이미지 텍스트</h1>
+	<h1>이미지 텍스트</h1>
+
+	<div>
+		<p>
+			<br>
+			<span class="A">학생</span>이라는 <span class="B">죄</span>로<br><br>
+			<span class="A">학교</span>라는 <span class="B">교도소</span>에서<br><br>
+			<span class="A">교실</span>이라는 <span class="B">감옥</span>에 갇혀<br><br>
+			<span class="A">출석부</span>라는 <span class="B">죄수명단</span>에 올라<br><br>
+			<span class="A">교복</span>이란 <span class="B">죄수복</span>을 입고<br><br>
+			<span class="A">공부</span>란 <span class="B">벌</span>을 받고<br><br>
+			<span class="A">졸업</span>이란 <span class="B">석방</span>을 기다린다...<br><br>
+		
+		</p>
+		<img id="CY" src="../../images/채연.jpg">
+	
+	</div>
+
+</body>
+</html>

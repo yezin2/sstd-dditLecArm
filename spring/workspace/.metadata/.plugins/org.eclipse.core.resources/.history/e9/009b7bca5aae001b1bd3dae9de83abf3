@@ -1,0 +1,15 @@
+package login;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+public interface IMemberService {
+	public int getMemberId(String id);
+	public int getMemberPw(MemberVO mv);
+	public List<MemberVO> getMemberList();
+	public int insertMember(MemberVO mv);
+	public int updateMember(MemberVO mv);
+	public int deleteMember(String id);
+}

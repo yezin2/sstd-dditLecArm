@@ -1,0 +1,17 @@
+package com.servlet.service;
+
+import java.sql.SQLException;
+
+import com.servlet.dto.MemberVO;
+import com.servlet.exception.InvalidPasswordException;
+import com.servlet.exception.NotFoundIDException;
+
+public class MemberServiceImpl implements MemberService {
+
+	@Override
+	public MemberVO login(String id, String pwd) throws NotFoundIDException, InvalidPasswordException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

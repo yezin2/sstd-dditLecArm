@@ -1,0 +1,5 @@
+package com.servlet.exception;
+
+public class FailedUpdateException extends Exception {
+
+}

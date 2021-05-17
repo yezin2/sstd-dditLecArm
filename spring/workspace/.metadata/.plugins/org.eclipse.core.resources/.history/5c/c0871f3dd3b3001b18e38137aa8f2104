@@ -1,0 +1,58 @@
+<%@page import="com.servlet.dto.MemberVO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script src="<c:url value='/' />/lib/jquery-3.6.0.js"></script>
+<meta charset="UTF-8">
+<title>selectMember</title>
+</head>
+<body>
+	<form method="post" action="<c:url value='/' />/update" class="mx-auto" style="width: 900px; margin-top: 200px;">
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon1">ID</span>
+		  </div>
+		  <input type="text" class="form-control" name="id" value="${mv.id }" readonly="readonly">
+		</div>
+		
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon1">PASSWORD</span>
+		  </div>
+		  <input type="password" class="form-control" name="pwd" value="${mv.pwd }">
+		</div>
+		
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon1">NAME</span>
+		  </div>
+		  <input type="text" class="form-control" name="name" value="${mv.name }">
+		</div>
+		
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon1">EMAIL</span>
+		  </div>
+		  <input type="text" class="form-control" name="email" value="${mv.email }">
+		</div>
+		
+		<div class="input-group mb-3">
+		  <div class="input-group-prepend">
+		    <span class="input-group-text" id="basic-addon1">PHONE</span>
+		  </div>
+		  <input type="text" class="form-control" name="phone" value="${mv.phone }">
+		</div>
+		<button type="submit" class="btn btn-secondary btn-lg btn-block">수정완료</button>
+	</form>
+</body>
+<script type="text/javascript">
+	${script }
+</script>
+</html>

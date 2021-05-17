@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="member">
+	<select id="selectMember" resultClass="com.servlet.dto.MemberVO">
+		SELECT *
+		FROM TB_LOGIN
+	</select>
+	<insert id="insertMember">
+		insert into TB_LOGIN(ID, PWD, EMAIL, PHONE, NAME)
+			values(#id#, #pwd#, #email#, #phone#, #name#)
+	</insert>
+	<update id="updateMember">
+		update TB_LOGIN set 
+				PWD = #pwd#
+			  , EMAIL = #email#
+			  , PHONE = #phone#
+			  , NAME = #name#
+		where ID = #id#
+	</update>
+	<delete id="deleteMember">
+		delete from TB_LOGIN where ID = #id#
+	</delete>
+</sqlMap>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+         PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+         "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="login">
+	<select id="getMemberId">
+		SELECT ID id
+		FROM TB_LOGIN
+		WHERE ID = #id#
+	</select>
+	<select id="getMemberPw">
+		SELECT *
+		FROM TB_LOGIN
+		WHERE 1=1
+		AND ID = #memId#
+		AND PW = #mempw#
+	</select>
+	<select id="getMemberList"></select>
+	<insert id="insertMember"></insert>
+	<update id="updateMember"></update>
+	<delete id="deleteMember"></delete>
+</sqlMap>

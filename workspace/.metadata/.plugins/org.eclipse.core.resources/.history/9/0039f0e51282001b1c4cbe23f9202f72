@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+			body {
+				margin: 0px;
+			}
+			header {
+				background-color: pink;
+				line-height: 80px;
+				text-align: center;
+			}
+			header h1 {
+				margin: 0px;
+			}
+			nav {
+				background-color: orange;
+				float: left;
+				width: calc(30% - 40px);
+				height: calc(100vh - 120px);
+				padding: 20px;
+				min-width: 200px;
+			
+			}
+			nav h2 {
+				margin:  0px;
+			}
+			img {
+				width: 200px;
+
+			}
+			section {
+				background-color: yellow;
+				float: right;
+				width: calc(70% - 40px);
+				height: calc(100vh - 120px);
+				padding: 20px;
+			}
+			section h3 {
+				margin:  0px;
+			}
+			article {
+				padding: 10px;
+			}
+			footer {
+				background-color: navy;
+				color: white;
+				clear: both;
+				line-height: 40px;
+				text-align: center;
+			
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<!-- 머리글 -->
+		<header>
+			<h1>My Blog Page</h1>
+		</header>
+		<!-- 네비 -->
+		<nav>
+			<h2>Links</h2>
+			<ul>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+				<li><a href="http://gogle.com" target= "blank">W3C</a></li>
+			</ul>
+			<img alt="타디스" src="../../images/타디스2.png">
+			<p>TARDIS</p>
+		</nav>
+		<!-- 본문 -->
+		<section>
+			<!-- 시맨틱 태그 -->
+			<div>
+			<article>
+				<h3>Semantic Tags</h3>
+				<p>시맨틱 요소들은 브라우저에게 요소의 의미나 목적을 명확하게 알려주는 요소이다.</p>
+			</article>
+			</div>
+			<!-- div 내용 -->
+			<article>
+				<h3>div와 span</h3>
+				<p>div는 divide의 약자로서 대한민국 만세 만세 만만세</p>
+				
+			</article>
+		</section>
+		<!-- 바닥글 -->
+		<footer>
+			<p>Copyright (c) 2021 Tardis</p>
+		</footer>
+	</body>
+</html>

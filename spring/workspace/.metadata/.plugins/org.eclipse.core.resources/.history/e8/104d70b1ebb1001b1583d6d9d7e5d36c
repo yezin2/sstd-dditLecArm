@@ -1,0 +1,17 @@
+package com.servlet.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import com.servlet.dto.MemberVO;
+import com.servlet.exception.FailedInsertException;
+import com.servlet.exception.InvalidPasswordException;
+import com.servlet.exception.NotFoundIDException;
+import com.servlet.exception.SelecteNullpointerException;
+
+public interface MemberService {
+	public List<MemberVO> selectMember()throws SQLException, SelecteNullpointerException;
+	public int insertMember(MemberVO mv)throws SQLException, FailedInsertException;
+	public int updateMember(MemberVO mv)throws SQLException;
+	public int deleteMember(String memId)throws SQLException;
+}
