@@ -5,7 +5,7 @@ public class MenuVO {
 	private String mname;
 	private String murl;
 	private String micon;
-	private String jText;
+	private String jtext;
 	private String upcode;
 	private int mlevel;
 	
@@ -33,11 +33,11 @@ public class MenuVO {
 	public void setMicon(String micon) {
 		this.micon = micon;
 	}
-	public String getjText() {
-		return jText;
+	public String getJtext() {
+		return jtext;
 	}
-	public void setjText(String jText) {
-		this.jText = jText;
+	public void setjText(String jtext) {
+		this.jtext = jtext;
 	}
 	public String getUpcode() {
 		return upcode;
