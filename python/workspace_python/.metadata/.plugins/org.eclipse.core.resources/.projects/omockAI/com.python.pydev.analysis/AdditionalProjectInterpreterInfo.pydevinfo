@@ -1,0 +1,70 @@
+-- VERSION_5
+-- START DISKCACHE_3
+D:\workspace_python\.metadata\.plugins\org.eclipse.core.resources\.projects\omockAI\com.python.pydev.analysis\v2_indexcache
+read_dataset|1608211987000000000|D:\workspace_python\omockAI\read_dataset.py
+train_neat|1608211987000000000|D:\workspace_python\omockAI\train_neat.py
+gomoku|1608211987000000000|D:\workspace_python\omockAI\gomoku.py
+gui|1608211987000000000|D:\workspace_python\omockAI\gui.py
+create_dataset|1621595461931457700|D:\workspace_python\omockAI\create_dataset.py
+-- END DISKCACHE
+-- START DICTIONARY
+17
+12=Gomoku
+10=train_neat
+16=Gomoku.next
+3=D:\workspace_python\omockAI\read_dataset.py
+8=gomoku
+1=D:\workspace_python\omockAI\gui.py
+6=create_dataset
+9=D:\workspace_python\omockAI\train_neat.py
+17=Gomoku.check_won
+5=D:\workspace_python\omockAI\create_dataset.py
+11=Board
+4=read_dataset
+13=Board.__init__
+2=gui
+7=D:\workspace_python\omockAI\gomoku.py
+14=Gomoku.__init__
+15=Gomoku.reset
+-- END DICTIONARY
+-- START TREE 1
+24
+app|1|app!1^8#1*19@
+b|1|b!1^26#9*19@
+bas|2|base_path!3^5#1*35@base_path!5^10#1*51@
+boa|5|board!7^86#5*67@Board!7^3#7*65@board!1^18#1*19@board_buttons!1^19#1*19@board!5^26#5*51@
+con|1|config!9^70#1*83@
+dat|1|data!3^10#5*35@
+end|1|end_session!1^82#5*18@
+eva|2|eval_genome!9^13#5*82@eval_genomes!9^60#5*82@
+fil|2|file_list!3^7#1*35@file_list!5^14#1*51@
+gam|3|game!7^87#5*67@game_rule!5^9#1*51@game!1^20#1*19@
+gom|1|Gomoku!7^17#7*65@
+inp|3|inputs!3^11#5*35@input_rot!5^49#13*51@input!5^39#9*51@
+lin|1|lines!5^18#9*51@
+max|1|max_generation!9^11#1*83@
+mod|1|model!1^6#1*19@
+on_|3|on_mouse_enter!1^29#13*18@on_mouse_exit!1^32#13*18@on_click!1^39#13*18@
+out|4|output_rot!5^50#13*51@outputs!3^12#5*35@output_path!5^11#1*51@output!5^43#9*51@
+pe|1|pe!9^78#1*83@
+pla|1|player!5^35#13*51@
+pop|1|pop!9^72#1*83@
+run|1|runs_per_net!9^9#1*83@
+sta|1|stats!9^73#1*83@
+win|1|winner!9^79#1*83@
+won|1|won_player!7^91#9*67@
+-- END TREE
+-- START TREE 2
+11
+__i|2|__init__!11&7^4#9*66@__init__!12&7^18#9*66@
+__r|1|__repr__!11&7^9#9*66@
+boa|2|board!13&7^7#9*67@board!14&7^19#9*67@
+che|1|check_won!12&7^46#9*66@
+cur|3|current_player!14&7^20#9*67@current_player!15&7^25#9*67@current_player!16&7^42#13*67@
+h|1|h!13&7^6#9*67@
+nex|1|next!12&7^40#9*66@
+put|1|put!12&7^28#9*66@
+res|1|reset!12&7^23#9*66@
+w|1|w!13&7^5#9*67@
+won|3|won_player!14&7^21#9*67@won_player!15&7^26#9*67@won_player!17&7^53#25*67@
+-- END TREE

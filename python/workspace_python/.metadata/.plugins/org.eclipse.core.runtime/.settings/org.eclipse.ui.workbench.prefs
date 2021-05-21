@@ -19,6 +19,7 @@ org.eclipse.jface.textfont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|
 org.eclipse.mylyn.wikitext.ui.presentation.textFont=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.pde.internal.ui.compare.ManifestContentMergeViewer=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
 org.eclipse.pde.internal.ui.compare.PluginContentMergeViewer=1|Consolas|14.25|0|WINDOWS|1|-19|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands/>
 org.eclipse.ui.workbench.ACTIVE_TAB_INNER_KEYLINE_COLOR=0,1,2
 org.eclipse.ui.workbench.ACTIVE_TAB_OUTER_KEYLINE_COLOR=0,1,2
 org.eclipse.ui.workbench.ACTIVE_TAB_OUTLINE_COLOR=0,1,2

@@ -1,0 +1,24 @@
+from flask import Flask ,request, render_template, jsonify
+from day10.mydao_emp import DaoEmp
+
+app = Flask(__name__,static_url_path='') 
+
+@app.route('/') 
+@app.route('/list')
+def list(): 
+    de = DaoEmp()
+    mylist = de.myselect()
+    return render_template('list.html',mylist=mylist)
+@app.route('/add.ajax')
+def ajax_add():
+    p = request.get_json()
+    de = DaoEmp()
+    cnt = de.myinsert(p.e_id, p.e_name, p.birth)
+    e_id = p.e_id
+    e_name = p.e_name
+    birth = p.
+        
+    return jsonify(result = 'success', result2 = data)
+
+if __name__ == '__main__': 
+    app.run(debug=True) 

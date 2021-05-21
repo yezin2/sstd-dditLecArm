@@ -1,0 +1,14 @@
+MODULES_MANAGER_V3
+login.__init__|D:\workspace_python\naverlogin\login\__init__.py
+login.admin|D:\workspace_python\naverlogin\login\admin.py
+login.apps|D:\workspace_python\naverlogin\login\apps.py
+login.migrations.__init__|D:\workspace_python\naverlogin\login\migrations\__init__.py
+login.models|D:\workspace_python\naverlogin\login\models.py
+login.tests|D:\workspace_python\naverlogin\login\tests.py
+login.views|D:\workspace_python\naverlogin\login\views.py
+manage|D:\workspace_python\naverlogin\manage.py
+naverlogin.__init__|D:\workspace_python\naverlogin\naverlogin\__init__.py
+naverlogin.asgi|D:\workspace_python\naverlogin\naverlogin\asgi.py
+naverlogin.settings|D:\workspace_python\naverlogin\naverlogin\settings.py
+naverlogin.urls|D:\workspace_python\naverlogin\naverlogin\urls.py
+naverlogin.wsgi|D:\workspace_python\naverlogin\naverlogin\wsgi.py

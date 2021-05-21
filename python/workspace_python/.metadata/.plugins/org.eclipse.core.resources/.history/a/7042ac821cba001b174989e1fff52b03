@@ -1,0 +1,152 @@
+from sklearn import svm, metrics
+import pandas as pd
+from keras.datasets import mnist
+from keras.models import Sequential
+from keras.layers.core import Dense, Dropout, Activation
+from keras.optimizers import Adam 
+from keras.utils import np_utils
+import numpy as np
+import tensorflow as tf
+
+df_train = pd.read_csv(r'D:\토닥토닥파이썬\소스\머신러닝\예제\소프트맥스\mnist\train.csv',engine='python',encoding='cp949',header=None)
+def preprocess_x_train():
+    for c in df_train.columns[1:]:
+        #print(c)
+        #df[c] = df[c] / df[c].max()
+        #df_train[c]=(df_train[c]-df_train[c].min())/(df_train[c].max()-df_train[c].min())
+        if df_train[c].std()!=0:
+            df_train[c]=(df_train[c]-df_train[c].mean())/df_train[c].std()
+    #print(df_train.head())
+preprocess_x_train()    
+x_train = df_train.iloc[:,1:].values
+#x_train = x_train / 255
+print(x_train.shape) #(1001, 784)
+def preprocess_y_train():
+    pass
+preprocess_y_train()
+#y_train = df_train[0].values #x
+y_train = df_train[[0]].values 
+print(y_train.shape) #(1001, 1)
+y_train = np_utils.to_categorical(y_train, 10)
+df_test = pd.read_csv(r'D:\토닥토닥파이썬\소스\머신러닝\예제\소프트맥스\mnist\t10k.csv',engine='python',encoding='cp949',header=None)
+def preprocess_x_test():
+    for c in df_test.columns[1:]:
+        #print(c)
+        #df_test[c] = df_test[c] / df_test[c].max()
+        #df_test[c]=(df_test[c]-df_test[c].min())/(df_test[c].max()-df_test[c].min())
+        if df_test[c].std()!=0:
+            df_test[c]=(df_test[c]-df_test[c].mean())/df_test[c].std()   
+    #print(df_test.head())
+preprocess_x_test()
+x_test = df_test.iloc[:,1:].values
+#x_test = x_test / 255
+print(x_test.shape) #(501, 784)
+def preprocess_y_test():
+    pass
+preprocess_y_test()
+#y_test = df_test[0].values #x
+y_test = df_test[[0]].values
+print(y_test.shape) #(501, 1)
+y_test  = np_utils.to_categorical(y_test, 10)
+
+#x_train, x_test, y_train, y_test = train_test_split(preprocess_x_data(x_data), preprocess_y_data(y_data))
+'''
+def scatter1():
+    import matplotlib.pylab as plt
+    import matplotlib as mpl
+    mpl.rc('font', family='Malgun Gothic') #한글 폰트 설정
+    df_notpass = df[df['y']==0] #notpass
+    df_pass = df[df['y']==1] #pass
+    plt.scatter(df_notpass['english'],df_notpass['math'],label='notpass')
+    plt.scatter(df_pass['english'],df_pass['math'],label='pass')
+    plt.title('분포도')
+    plt.xlabel('english')
+    plt.ylabel('math')
+    plt.legend() #범례
+    plt.show()
+scatter1()
+'''
+
+####################
+
+nb_classes = 10
+X = tf.placeholder(tf.float32, shape=[None,784])
+Y = tf.placeholder(tf.float32, shape=[None,nb_classes]) #0~9
+
+W = tf.Variable(tf.random_normal(shape=[784,nb_classes]), name='weight')
+b = tf.Variable(tf.random_normal(shape=[nb_classes]), name='bias') 
+logits = tf.matmul(X, W) + b
+hypothesis = tf.nn.softmax(logits)
+
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=Y))
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1)
+train_op = optimizer.minimize(cost)
+
+Y_argmax = tf.argmax(Y, axis=1)
+hypothesis_argmax = tf.argmax(hypothesis, axis=1)
+accuracy = tf.reduce_mean(tf.cast(tf.equal(Y_argmax, hypothesis_argmax), dtype=tf.float32))
+
+####################
+
+sess = tf.Session()
+sess.run(tf.global_variables_initializer())
+
+for step in range(2000):
+    _, cost_val,W_val,b_val = sess.run([train_op,cost,W,b], feed_dict={X: x_train, Y: y_train})
+    if step % 200 == 0:
+        print(step, cost_val, W_val, b_val)
+'''
+...
+1600 0.03748995 [[ 0.5928423   0.11100996 -0.08507241 ...  0.56537193  0.9239471
+  -0.3388978 ]
+ [-0.784814   -0.7072203  -1.2845999  ...  0.47016445 -0.20405859
+   0.44987613]
+ [-0.30944306  2.1175125  -1.0561825  ...  0.29711124  1.5286282
+   0.07112707]
+ ...
+ [ 0.03198322 -1.1519685  -1.3754816  ... -1.4146307   0.47069177
+  -0.7375207 ]
+ [ 1.0881194  -0.4110461   0.89813364 ... -1.7646282   0.31447986
+  -1.2728618 ]
+ [ 0.0524478  -0.8189919  -1.4195887  ...  0.52065104 -0.8154169
+   1.1742467 ]] [-0.7469085  -1.0512133   1.4620491  -0.767215    0.6196793   1.2061155
+  1.0179025   0.69520545 -0.7336286   0.65517205]
+1800 0.027050741 [[ 0.5928423   0.11100996 -0.08507241 ...  0.56537193  0.9239471
+  -0.3388978 ]
+ [-0.784814   -0.7072203  -1.2845999  ...  0.47016445 -0.20405859
+   0.44987613]
+ [-0.30944306  2.1175125  -1.0561825  ...  0.29711124  1.5286282
+   0.07112707]
+ ...
+ [ 0.03198322 -1.1519685  -1.3754816  ... -1.4146307   0.47069177
+  -0.7375207 ]
+ [ 1.0881194  -0.4110461   0.89813364 ... -1.7646282   0.31447986
+  -1.2728618 ]
+ [ 0.0524478  -0.8189919  -1.4195887  ...  0.52065104 -0.8154169
+   1.1742467 ]] [-0.74923563 -1.0568967   1.4627467  -0.7767647   0.61584306  1.2102683
+  1.0104647   0.6940991  -0.73527294  0.6819066 ]
+'''
+
+input = '5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,18,18,18,126,136,175,26,166,255,247,127,0,0,0,0,0,0,0,0,0,0,0,0,30,36,94,154,170,253,253,253,253,253,225,172,253,242,195,64,0,0,0,0,0,0,0,0,0,0,0,49,238,253,253,253,253,253,253,253,253,251,93,82,82,56,39,0,0,0,0,0,0,0,0,0,0,0,0,18,219,253,253,253,253,253,198,182,247,241,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,80,156,107,253,253,205,11,0,43,154,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,1,154,253,90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139,253,190,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,190,253,70,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,35,241,225,160,108,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,81,240,253,253,119,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,45,186,253,253,150,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,93,252,253,187,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,249,253,249,64,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,46,130,183,253,253,207,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,39,148,229,253,253,253,250,182,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,24,114,221,253,253,253,253,201,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,66,213,253,253,253,253,198,81,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,18,171,219,253,253,253,253,195,80,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,55,172,226,253,253,253,253,244,133,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,136,253,253,253,212,135,132,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0'
+input = input.split(',')
+print(input[0]) #5 #숫자 5
+print(len(input[1:])) #784 #784: 28개 * 28개 = 784개
+print(sess.run(hypothesis, feed_dict={X: [input[1:]]})) #[[0. 0. 0. 0. 0. 0. 0. 0. 1. 0.]]
+'''
+[[9.9982470e-01 1.4841371e-06 3.5713001e-05 7.8376935e-08 7.6318334e-05
+  4.3767457e-05 1.8044646e-05]
+ [9.9711895e-01 4.1044710e-05 2.1013350e-03 7.3347737e-06 5.5924529e-04
+  1.6268091e-04 9.3416083e-06]]
+'''
+for y, ha in zip(sess.run(Y_argmax, feed_dict={Y: y_test}), sess.run(hypothesis_argmax, feed_dict={X: x_test})):
+    print(y==ha, y, ha)  
+'''
+...
+True 9 9
+True 4 4
+True 0 0
+True 6 6
+True 3 3
+'''
+
+print(sess.run(accuracy, feed_dict={X: x_test, Y: y_test})) #0.7265469

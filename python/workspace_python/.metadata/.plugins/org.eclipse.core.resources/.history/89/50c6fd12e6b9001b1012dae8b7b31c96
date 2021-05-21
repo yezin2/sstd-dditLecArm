@@ -1,0 +1,6 @@
+import sys, os
+sys.path.append("./dataset") # 이때, dataset 폴더는 실행하는 py 파일의 경로와 일치해야 한다.
+import numpy as np
+import pickle
+from dataset.mnist import load_mnist
+import matplotlib.pylab as plt

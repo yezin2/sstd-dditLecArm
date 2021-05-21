@@ -1,0 +1,69 @@
+-- VERSION_5
+-- START DISKCACHE_3
+D:\workspace_python\.metadata\.plugins\org.eclipse.core.resources\.projects\naverlogin\com.python.pydev.analysis\v2_indexcache
+login.admin|1621473509139474300|D:\workspace_python\naverlogin\login\admin.py
+login.tests|1621473509143464400|D:\workspace_python\naverlogin\login\tests.py
+login.models|1621473509142467300|D:\workspace_python\naverlogin\login\models.py
+login.apps|1621473509140471400|D:\workspace_python\naverlogin\login\apps.py
+login.migrations.__init__|1621473465937484400|D:\workspace_python\naverlogin\login\migrations\__init__.py
+manage|1621473619178495100|D:\workspace_python\naverlogin\manage.py
+naverlogin.asgi|1621473584069559800|D:\workspace_python\naverlogin\naverlogin\asgi.py
+naverlogin.settings|1621473584070556200|D:\workspace_python\naverlogin\naverlogin\settings.py
+login.__init__|1621473509138476700|D:\workspace_python\naverlogin\login\__init__.py
+naverlogin.wsgi|1621473584074546900|D:\workspace_python\naverlogin\naverlogin\wsgi.py
+naverlogin.__init__|1621473584067564200|D:\workspace_python\naverlogin\naverlogin\__init__.py
+login.views|1621473509145458700|D:\workspace_python\naverlogin\login\views.py
+naverlogin.urls|1621473584072551400|D:\workspace_python\naverlogin\naverlogin\urls.py
+-- END DISKCACHE
+-- START DICTIONARY
+18
+13=D:\workspace_python\naverlogin\manage.py
+7=D:\workspace_python\naverlogin\login\models.py
+8=login.models
+3=D:\workspace_python\naverlogin\naverlogin\asgi.py
+12=login.apps
+5=D:\workspace_python\naverlogin\naverlogin\wsgi.py
+14=manage
+1=D:\workspace_python\naverlogin\naverlogin\settings.py
+15=D:\workspace_python\naverlogin\naverlogin\urls.py
+2=naverlogin.settings
+4=naverlogin.asgi
+17=LoginConfig
+6=naverlogin.wsgi
+9=D:\workspace_python\naverlogin\login\views.py
+11=D:\workspace_python\naverlogin\login\apps.py
+10=login.views
+18=Blog
+16=naverlogin.urls
+-- END DICTIONARY
+-- START TREE 1
+22
+all|1|ALLOWED_HOSTS!1^28#1*19@
+app|2|application!3^16#1*35@application!5^16#1*51@
+aut|2|AUTHENTICATION_BACKENDS!1^139#1*19@AUTH_PASSWORD_VALIDATORS!1^108#1*19@
+bas|1|BASE_DIR!1^16#1*19@
+blo|1|Blog!7^3#7*65@
+dat|1|DATABASES!1^89#1*19@
+deb|1|DEBUG!1^26#1*19@
+def|1|DEFAULT_AUTO_FIELD!1^133#1*19@
+ins|1|INSTALLED_APPS!1^48#1*19@
+lan|1|LANGUAGE_CODE!1^114#1*19@
+log|3|login!9^3#5*82@LOGIN_REDIRECT_URL!1^142#1*19@LoginConfig!11^4#7*97@
+mai|1|main!13^7#5*114@
+mid|1|MIDDLEWARE!1^58#1*19@
+roo|1|ROOT_URLCONF!1^60#1*19@
+sec|1|SECRET_KEY!1^23#1*19@
+sit|1|SITE_ID!1^141#1*19@
+sta|1|STATIC_URL!1^128#1*19@
+tem|1|TEMPLATES!1^76#1*19@
+tim|1|TIME_ZONE!1^116#1*19@
+url|1|urlpatterns!15^24#1*131@
+use|3|USE_L10N!1^120#1*19@USE_I18N!1^118#1*19@USE_TZ!1^122#1*19@
+wsg|1|WSGI_APPLICATION!1^78#1*19@
+-- END TREE
+-- START TREE 2
+3
+def|1|default_auto_field!17&11^5#5*99@
+nam|1|name!17&11^6#5*99@
+tex|1|text!18&7^4#5*67@
+-- END TREE

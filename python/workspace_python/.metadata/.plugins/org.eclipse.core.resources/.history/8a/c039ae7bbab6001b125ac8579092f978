@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function fn_ajax(){
+	$.ajax({
+        type: 'POST',
+        url: 'ajax',
+        data: JSON.stringify(postdata),
+        dataType : 'JSON',
+        contentType: "application/json",
+        success: function(data){
+        	console.log(data)
+        },
+        error: function(request, status, error){
+            alert('ajax 통신 실패')
+            alert(error);
+        }
+    })
+}
+        $('#execute').click(function(){
+            var id = $('#id1').val();
+            var password = $('#password1').val();
+            var email = $('#email1').val();
+
+            var postdata = {
+                'id':id, 'password':password, 'email':email
+            }
+            $.ajax({
+                type: 'POST',
+                url: 'ajax',
+                data: JSON.stringify(postdata),
+                dataType : 'JSON',
+                contentType: "application/json",
+                success: function(data){
+                	console.log(data)
+                },
+                error: function(request, status, error){
+                    alert('ajax 통신 실패')
+                    alert(error);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+	i'm ajax!!!!!!!!!!!!!!!@@@@@@@@@@@@@
+</body>
+</html>

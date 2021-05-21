@@ -1,0 +1,17 @@
+from flask import Flask ,request, render_template, jsonify
+
+app = Flask(__name__,static_url_path='') 
+
+@app.route('/') 
+def index(): 
+    return 'hello!'
+
+@app.route('/ajax', methods=['POST']) 
+def ajax(): 
+    data = request
+    return 'hello!'
+
+if __name__ == '__main__': 
+    app.run(debug=True) 
+    
+#html파일이 꼭 templates파일안에 존재해야함
