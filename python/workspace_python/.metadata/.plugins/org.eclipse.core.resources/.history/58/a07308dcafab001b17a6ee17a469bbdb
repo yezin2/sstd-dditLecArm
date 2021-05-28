@@ -1,4 +1,0 @@
-arra = range(10)
-
-for i in arra:
-    print("3 * " + str(i) + " = " + (3 * i))

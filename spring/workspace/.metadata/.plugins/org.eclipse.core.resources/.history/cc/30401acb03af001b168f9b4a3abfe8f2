@@ -1,5 +1,0 @@
-package com.servlet.dto;
-
-public class MemberVO {
-
-}

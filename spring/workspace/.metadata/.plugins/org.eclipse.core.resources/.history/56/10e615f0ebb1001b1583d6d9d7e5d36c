@@ -1,5 +1,0 @@
-package com.servlet.exception;
-
-public class FailedDeleteException extends Exception {
-
-}

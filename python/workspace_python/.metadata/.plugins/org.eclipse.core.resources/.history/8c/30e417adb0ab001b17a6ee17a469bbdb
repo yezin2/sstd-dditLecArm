@@ -1,4 +1,0 @@
-for i in range(9):
-    print("===============" + str(i)+ "단" + "===============")
-    for j in range(9):
-        print(str(j+1) + " * " + str(i+1) + " = " + str((j+1) * (i+1)))

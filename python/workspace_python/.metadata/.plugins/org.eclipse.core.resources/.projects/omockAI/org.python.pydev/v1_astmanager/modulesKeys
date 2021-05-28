@@ -1,6 +1,0 @@
-MODULES_MANAGER_V3
-create_dataset|D:\workspace_python\omockAI\create_dataset.py
-gomoku|D:\workspace_python\omockAI\gomoku.py
-gui|D:\workspace_python\omockAI\gui.py
-read_dataset|D:\workspace_python\omockAI\read_dataset.py
-train_neat|D:\workspace_python\omockAI\train_neat.py

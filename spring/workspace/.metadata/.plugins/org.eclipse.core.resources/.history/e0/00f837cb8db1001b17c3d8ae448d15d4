@@ -1,5 +1,0 @@
-package com.servlet.dao;
-
-public class MemDAOImpl {
-
-}

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Move &apos;score.jsp&apos; to &apos;build&apos;" description="Move &apos;score.jsp&apos; to &apos;build&apos;" destination="build" element1="WebContent/WEB-INF/score.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1620709624876" updateReferences="true"/>&#x0A;<refactoring comment="Move &apos;score.jsp&apos; to &apos;WebContent&apos;" description="Move &apos;score.jsp&apos; to &apos;WebContent&apos;" destination="WebContent" element1="build/score.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1620709628070" updateReferences="true"/>
-</session>

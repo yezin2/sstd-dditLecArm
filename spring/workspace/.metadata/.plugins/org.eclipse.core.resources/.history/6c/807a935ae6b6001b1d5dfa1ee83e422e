@@ -1,5 +1,0 @@
-# db.properties
-driver=oracle.jdbc.driver.OracleDriver
-url=jdbc:oracle:thin:@localHost:1521:XE
-username=pc17
-password=java

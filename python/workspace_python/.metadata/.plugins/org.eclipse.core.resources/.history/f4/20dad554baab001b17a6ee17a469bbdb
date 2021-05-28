@@ -1,8 +1,0 @@
-fir = int(input("fir 숫자를 입력하세요"))
-sec = int(input("sec 숫자를 입력하세요"))
-
-for i in range(fir,sec):
-    
-
-print("숫자의 합은 ", res, end="")
-print(" 입니다")

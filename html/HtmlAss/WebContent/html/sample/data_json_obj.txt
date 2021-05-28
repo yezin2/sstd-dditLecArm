@@ -1,6 +1,0 @@
-{
-	"name" : "김선호",
-	"age" : 36,
-	"gender" : "male",
-	"job" : "actor"
-}

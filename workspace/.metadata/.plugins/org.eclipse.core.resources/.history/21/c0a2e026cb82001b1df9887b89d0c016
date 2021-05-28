@@ -1,6 +1,0 @@
-/**
- * html
- */
-var now = new Date();
-document.write(now);
-document.write("안녕하세요");

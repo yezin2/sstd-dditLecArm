@@ -1,6 +1,0 @@
-package kr.or.ddit.dto;
-
-public class MenuVO {
-	private String mcode; //메뉴코드
-	
-}
