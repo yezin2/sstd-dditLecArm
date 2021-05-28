@@ -18,8 +18,11 @@ import kr.or.ddit.service.MemberServiceImpl;
 @WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
-    
+	private MemberService memberService = new MemberServiceImpl();
+	public void setMemberService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");

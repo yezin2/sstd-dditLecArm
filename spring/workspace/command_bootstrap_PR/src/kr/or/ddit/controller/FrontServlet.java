@@ -1,4 +1,4 @@
-package com.servlet.test;
+package kr.or.ddit.controller;
 
 import java.io.IOException;
 
@@ -7,25 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.servlet.view.HTMLView;
-
-public class LoginServlet extends HttpServlet{
+public class FrontServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HTMLView.loginView(resp);
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//입력
-		String id = req.getParameter("id");
-		String pwd = req.getParameter("pwd");
-		
-		//처리
-		String script = "";
-		//memService.login(id,pwd) : memberVO, InvalidPasswordException, NotFoundIDException
-		
-		//출력
-		HTMLView.html(resp, script);
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
 	}
 }
